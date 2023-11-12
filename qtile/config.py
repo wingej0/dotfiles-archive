@@ -2,6 +2,7 @@ from modules.get_theme import get_wallpaper, colors
 from modules.groups import groups
 from modules.hooks import *
 from modules.keys import keys, mod
+from modules.layouts import layouts
 from modules.screens import screens
 
 from libqtile import bar, layout, widget
@@ -9,28 +10,8 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
-layouts = [
-    # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    #layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
-]
+from libqtile.backend.wayland import InputConfig
 
-widget_defaults = dict(
-    font="sans",
-    fontsize=12,
-    padding=3,
-)
-extension_defaults = widget_defaults.copy()
 
 # Drag floating layouts.
 mouse = [
@@ -62,11 +43,13 @@ focus_on_window_activation = "smart"
 reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing
-# focus, should we respect this or not?
+# focus, should we respect this or not?from libqtile.backend.wayland import InputConfig
 auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
-wl_input_rules = None
+wl_input_rules = {
+    "type:touchpad": InputConfig(tap=True, natural_scroll=True, dwt=True)
+}
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the

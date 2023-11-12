@@ -12,8 +12,10 @@ keys = [
         desc="Launch terminal"),
 
     # Qtile System Actions
-    Key([mod, "shift"], "r", lazy.restart(),
+    Key([mod, "shift"], "r", lazy.reload_config(),
         desc="Restart Qtile"),
+    Key([mod, "shift"], "q", lazy.shutdown(),
+        desc="Shutdown Qtile"),
 
     # Active Window Actions
     Key([mod], "f", lazy.window.toggle_fullscreen(), 
