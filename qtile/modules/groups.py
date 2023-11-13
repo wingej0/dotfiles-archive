@@ -7,7 +7,7 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "minus", "equal
 
 group_labels = ["", "", "", "", "", "", "", "", "", "", "", ""]
 
-group_layouts = ["monadtall", "monadtall", "monadthreecol", "monadtall", "monadwide", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadwide", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
 # Add group names, labels, and default layouts to the groups object.
 for i in range(len(group_names)):

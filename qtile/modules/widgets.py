@@ -1,6 +1,7 @@
 import subprocess
 
 from libqtile import qtile
+from libqtile.command import lazy
 from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
 
@@ -23,6 +24,10 @@ powerline_right = {
     ]
 }
 
+# Launch clipboard history
+def launch_cliphist():
+    qtile.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh")
+
 def init_widgets():
     widgets_list = [
         widget.Sep(
@@ -42,26 +47,14 @@ def init_widgets():
             fontsize=14,
             foreground=colors['color15'],
             text="Qtile",
-            **powerline_left
-        ),
-        widget.WindowName(
-            background=colors['color15'],
-            empty_group_string=' ',
-            foreground=colors['color0'],
-            margin=0,
-            padding=8,
-            scroll=True,
-            width=200,
-            **widget_defaults,
-            **powerline_left
         ),
         widget.Sep(
-            foreground='#00000000',
-            linewidth=10,
-            **powerline_right
+            background=colors['color11'],
+            linewidth = 0,
+            **powerline_left,
         ),
         widget.TextBox(
-            text='',
+            text=' ',
             background=colors['color15'],
             foreground=colors['color0'],
             margin=0,
@@ -93,6 +86,25 @@ def init_widgets():
         widget.ThermalSensor(
             background=colors['color15'],
             foreground=colors['color0'],
+            **widget_defaults,
+            **powerline_left
+        ),
+        widget.Sep(
+            foreground='#00000000',
+            linewidth=10,
+            **powerline_right
+        ), 
+        widget.TextBox(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            text="󰃞",
+            **widget_defaults
+        ),
+        widget.GenPollText(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            func=lambda: subprocess.check_output("/home/wingej0/dotfiles/scripts/brightness.sh").decode("utf-8").strip(),
+            update_interval=30,
             **widget_defaults
         ),
         widget.Sep(
@@ -111,7 +123,7 @@ def init_widgets():
         widget.Volume(
             background=colors['color15'],
             foreground=colors['color0'],
-            get_volume_command="~/dotfiles/qtile/scripts/volume.sh",
+            get_volume_command="/home/wingej0/dotfiles/qtile/scripts/volume.sh",
             **widget_defaults
         ),
         widget.Sep(
@@ -124,19 +136,14 @@ def init_widgets():
             linewidth=10,
             **powerline_right
         ),
-        widget.TextBox(
-            text="",
+        widget.CurrentLayoutIcon(
             background=colors['color1'],
             foreground=colors['color15'],
-            **widget_defaults
+            scale=0.55,
         ),
-        widget.CheckUpdates(
+        widget.CurrentLayout(
             background=colors['color1'],
             foreground=colors['color15'],
-            distro='Arch_paru',
-            display_format='{updates}',
-            initial_text='0',
-            no_update_string='0',
             **widget_defaults,
             **powerline_left
         ),
@@ -158,6 +165,9 @@ def init_widgets():
             inactive=colors['color6'],
             this_current_screen_border=colors['color15'],
             this_screen_border=colors['color15'],
+            other_current_screen_border=colors['color1'],
+            other_screen_border=colors['color0'],
+            use_mouse_wheel=False,
         ),
         widget.Sep(
             background=colors['color11'],
@@ -167,20 +177,22 @@ def init_widgets():
         widget.Spacer(),
         widget.Sep(
             foreground='#00000000',
-            linewidth=20,
+            linewidth=10,
             **powerline_right
         ),
         widget.TextBox(
+            text="",
             background=colors['color1'],
             foreground=colors['color15'],
-            text="󰃞",
             **widget_defaults
         ),
-        widget.GenPollText(
+        widget.CheckUpdates(
             background=colors['color1'],
             foreground=colors['color15'],
-            func=lambda: subprocess.check_output("/home/wingej0/dotfiles/scripts/brightness.sh").decode("utf-8").strip(),
-            update_interval=30,
+            distro='Arch_checkupdates',
+            display_format='{updates}',
+            initial_text='0',
+            no_update_string='0',
             **widget_defaults,
             **powerline_left
         ),
@@ -206,6 +218,9 @@ def init_widgets():
             foreground=colors['color0'],
             func=lambda: subprocess.check_output("/home/wingej0/dotfiles/scripts/power-profile.sh").decode("utf-8").strip(),
             update_interval=30,
+            mouse_callbacks={
+                'Button1' : lazy.spawn('alacritty -e /home/wingej0/dotfiles/scripts/power-management.sh'),
+            },
             **widget_defaults,
             **powerline_left
         ),
@@ -220,6 +235,9 @@ def init_widgets():
             font="FontAwesome6Free",
             fontsize=14,
             text='',
+            mouse_callbacks={
+                'Button1' : lazy.spawn("google-chrome-stable --app=https://bard.google.com"),
+            }
         ),
         widget.TextBox(
             background=colors['color15'],
@@ -227,6 +245,19 @@ def init_widgets():
             font="FontAwesome6Free",
             fontsize=14,
             text='',
+            mouse_callbacks={
+                'Button1' : lazy.spawn('/home/wingej0/dotfiles/scripts/change-wp-theme.sh'),
+            }
+        ),
+        widget.TextBox(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            font="FontAwesome6Free",
+            fontsize=14,
+            text='',
+            mouse_callbacks={
+                'Button1' : launch_cliphist,
+            }
         ),
         widget.TextBox(
             background=colors['color15'],
@@ -234,6 +265,9 @@ def init_widgets():
             font="FontAwesome6Free",
             fontsize=14,
             text='',
+            mouse_callbacks={
+                'Button1' : lazy.spawn('pcmanfm'),
+            }
         ),
         widget.StatusNotifier(
             background=colors['color15'],

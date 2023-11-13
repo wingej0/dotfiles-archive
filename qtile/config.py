@@ -2,8 +2,9 @@ from modules.get_theme import get_wallpaper, colors
 from modules.groups import groups
 from modules.hooks import *
 from modules.keys import keys, mod
-from modules.layouts import layouts
+from modules.layouts import layouts, floating_layout
 from modules.screens import screens
+from modules.scratchpads import *
 
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
@@ -26,18 +27,6 @@ follow_mouse_focus = True
 bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
-floating_layout = layout.Floating(
-    float_rules=[
-        # Run the utility of `xprop` to see the wm class and name of an X client.
-        *layout.Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
-    ]
-)
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
@@ -48,7 +37,7 @@ auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = {
-    "type:touchpad": InputConfig(tap=True, natural_scroll=True, dwt=True)
+    "type:touchpad": InputConfig(tap=True, natural_scroll=True, dwt=True),
 }
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this

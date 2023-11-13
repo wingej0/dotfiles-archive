@@ -15,6 +15,3 @@ def get_colors():
     return colors['colors']
 
 colors = get_colors()
-
-# if __name__ == '__main__': 
-#     print(colors) 

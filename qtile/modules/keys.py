@@ -193,6 +193,8 @@ keys.extend([
         desc="Launch Calendar"),
     Key([mod], "t", lazy.spawn("telegram-desktop"),
         desc="Launch Telegram"),
+    Key([mod], "e", lazy.spawn("google-chrome-stable --app=https://tasks.google.com/embed/\?origin\=https://mail.google.com\&fullWidth\=1\&amp\;lfhs\=2"),
+        desc="Launch Tasks"),
     
     # System76 Power Management
     Key(["control", "mod1"], "b", lazy.spawn("system76-power charge-thresholds --profile balanced"),
@@ -227,5 +229,6 @@ keys.extend([
         desc="Increase brightness"),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-"),
         desc="Decrease brightness"),
-
+    Key([], "Print", lazy.spawn("sh /home/wingej0/dotfiles/scripts/grim.sh"),
+        desc="Take a screenshot")
 ])
