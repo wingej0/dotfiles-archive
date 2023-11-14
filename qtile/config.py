@@ -1,6 +1,6 @@
 from modules.get_theme import get_wallpaper, colors
 from modules.groups import groups
-from modules.hooks import *
+# from modules.hooks import *
 from modules.keys import keys, mod
 from modules.layouts import layouts, floating_layout
 from modules.screens import screens
@@ -48,4 +48,4 @@ wl_input_rules = {
 #
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
-wmname = "LG3D"
+wmname = "Qtile 0.23.0"

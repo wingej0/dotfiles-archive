@@ -24,10 +24,6 @@ powerline_right = {
     ]
 }
 
-# Launch clipboard history
-def launch_cliphist():
-    qtile.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh")
-
 def init_widgets():
     widgets_list = [
         widget.Sep(
@@ -65,7 +61,7 @@ def init_widgets():
             background=colors['color15'],
             foreground=colors['color0'],
             format= '{MemUsed: .0f}{mm}/{MemTotal:.0f}{mm}',
-            measure_mem="G",
+            measure_mem="M",
             margin=0,
             padding=0,
             **widget_defaults
@@ -123,7 +119,7 @@ def init_widgets():
         widget.Volume(
             background=colors['color15'],
             foreground=colors['color0'],
-            get_volume_command="/home/wingej0/dotfiles/qtile/scripts/volume.sh",
+            # get_volume_command="/home/wingej0/dotfiles/qtile/scripts/volume.sh",
             **widget_defaults
         ),
         widget.Sep(
@@ -247,6 +243,7 @@ def init_widgets():
             text='',
             mouse_callbacks={
                 'Button1' : lazy.spawn('/home/wingej0/dotfiles/scripts/change-wp-theme.sh'),
+                'Button3' : lazy.group['scratchpad'].dropdown_toggle('wallpaper')
             }
         ),
         widget.TextBox(
@@ -256,7 +253,7 @@ def init_widgets():
             fontsize=14,
             text='',
             mouse_callbacks={
-                'Button1' : launch_cliphist,
+                'Button1' : lazy.spawn('xfce4-clipman-history'),
             }
         ),
         widget.TextBox(

@@ -122,13 +122,13 @@ keys = [
         desc="Shuffle window right."),
     
     # Switch focus to specific monitor (out of three)
-    Key([mod], "i",
+    Key([mod], "o",
         lazy.to_screen(0),
         desc='Keyboard focus to monitor 1'),
-    Key([mod], "p",
+    Key([mod], "i",
         lazy.to_screen(1),
         desc='Keyboard focus to monitor 2'),
-    Key([mod], "o",
+    Key([mod], "p",
         lazy.to_screen(2),
         desc='Keyboard focus to monitor 3'),
 
@@ -157,11 +157,9 @@ for i in groups:
 # Scratchpad keybindings
 keys.extend([
     Key(["mod1"], "Return", lazy.group['scratchpad'].dropdown_toggle('term')),
-    Key(["mod1"], "c", lazy.group['scratchpad'].dropdown_toggle('calendar')),
     Key(["mod1"], "v", lazy.group['scratchpad'].dropdown_toggle('volume')),
     Key(["mod1"], "Space", lazy.group['scratchpad'].dropdown_toggle('newTask')),
-    Key(["mod1"], "a", lazy.group['scratchpad'].dropdown_toggle('alo-scraper')),
-    Key(["mod1"], "s", lazy.group['scratchpad'].dropdown_toggle('md-notes')),
+    Key([mod], "w", lazy.group['scratchpad'].dropdown_toggle('wallpaper'))
 ])
 
 # Drag floating layouts.
@@ -177,9 +175,9 @@ mouse = [
 keys.extend([
     Key([mod], "Escape", lazy.spawn("swaylock"),
         desc="Lock screen"),
-    Key([mod, "shift"], "Return", lazy.spawn("pcmanfm"),
+    Key([mod, "shift"], "Return", lazy.spawn("thunar"),
         desc="Launch file browser"),
-    Key([mod], "Space", lazy.spawn("rofi -show drun"),
+    Key([mod], "Space", lazy.spawn("xfce4-appfinder"),
         desc="Application launcher"),
     Key(["control", "mod1"], "delete", lazy.spawn("wlogout"),
         desc="Launch powermenu"),
@@ -187,8 +185,6 @@ keys.extend([
         desc="Launch web browser"),
     Key([mod], "m", lazy.spawn("mailspring"),
         desc="Launch email client"),
-    Key([mod], "e", lazy.spawn("sleek"),
-        desc="Launch task manager"),
     Key([mod], "c", lazy.spawn("google-chrome-stable --app=https://calendar.google.com"),
         desc="Launch Calendar"),
     Key([mod], "t", lazy.spawn("telegram-desktop"),
@@ -211,11 +207,11 @@ keys.extend([
         desc="Set power profile to performance"),
 
     # Media Keys
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("pulsemixer --change-volume +5"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl -- set-sink-volume 0 +5%"),
         desc="Volume Up"),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("pulsemixer --change-volume -5"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl -- set-sink-volume 0 -5%"),
         desc="Volume Down"),
-    Key([], "XF86AudioMute", lazy.spawn("pulsemixer --toggle-mute"),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle"),
         desc="Toggle Mute"),
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"),
         desc="Play/Pause"),
@@ -225,10 +221,10 @@ keys.extend([
         desc="Previous Song"),
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop"),
         desc="Stop"),
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 5%+"),
-        desc="Increase brightness"),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-"),
-        desc="Decrease brightness"),
+    # Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 5%+"),
+    #     desc="Increase brightness"),
+    # Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-"),
+    #     desc="Decrease brightness"),
     Key([], "Print", lazy.spawn("sh /home/wingej0/dotfiles/scripts/grim.sh"),
         desc="Take a screenshot")
 ])
