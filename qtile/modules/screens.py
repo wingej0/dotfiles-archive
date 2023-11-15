@@ -29,7 +29,7 @@ screens = [
             size=30,
             opacity=0.9
         ),
-        wallpaper="/home/wingej0/Pictures/family1.jpg",
+        wallpaper=get_wallpaper(),
         wallpaper_mode="fill"
     ),
 ]

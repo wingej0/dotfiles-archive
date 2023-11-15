@@ -266,9 +266,9 @@ def init_widgets():
                 'Button1' : lazy.spawn('pcmanfm'),
             }
         ),
-        widget.StatusNotifier(
-            background=colors['color15'],
-        ),
+        # widget.StatusNotifier(
+        #     background=colors['color15'],
+        # ),
         widget.Sep(
             background=colors['color15'],
             linewidth = 0,
