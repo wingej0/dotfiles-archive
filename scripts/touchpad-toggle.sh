@@ -1,12 +1,12 @@
 #!/bin/bash
 
-status=`hyprctl getoption device:elan0412:00-04f3:3240-touchpad:enabled | awk '/int/{print $2}'`
+STATUS=`xinput list-props "ELAN0412:00 04F3:3240 Touchpad" | awk '/Device Enabled/{print $4}'`
 
-if [ $status == "1" ]
+if [ $STATUS == 1 ]
 then
-  hyprctl keyword device:elan0412:00-04f3:3240-touchpad:enabled false
-  notify-send -u normal "Touchpad Disabled"
+    xinput disable "ELAN0412:00 04F3:3240 Touchpad"
+    notify-send "Touchpad Disabled"
 else
-  hyprctl keyword device:elan0412:00-04f3:3240-touchpad:enabled true
-  notify-send -u normal "Touchpad Enabled"
+    xinput enable "ELAN0412:00 04F3:3240 Touchpad"
+    notify-send "Touchpad Enabled"
 fi

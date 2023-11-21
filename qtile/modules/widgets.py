@@ -2,8 +2,10 @@ import subprocess
 
 from libqtile import qtile
 from libqtile.command import lazy
+# from libqtile.widget import TextBox
 from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
+from qtile_extras.widget.mixins import TooltipMixin
 
 from .get_theme import colors
 from .widget_defaults import widget_defaults
@@ -242,8 +244,7 @@ def init_widgets():
             fontsize=14,
             text='',
             mouse_callbacks={
-                'Button1' : lazy.spawn('/home/wingej0/dotfiles/scripts/change-wp-theme.sh'),
-                'Button3' : lazy.group['scratchpad'].dropdown_toggle('wallpaper')
+                'Button1' : lazy.group['scratchpad'].dropdown_toggle('wallpaper')
             }
         ),
         widget.TextBox(
@@ -253,7 +254,7 @@ def init_widgets():
             fontsize=14,
             text='',
             mouse_callbacks={
-                'Button1' : lazy.spawn('xfce4-clipman-history'),
+                'Button1' : lazy.spawn('copyq show'),
             }
         ),
         widget.TextBox(
@@ -263,12 +264,40 @@ def init_widgets():
             fontsize=14,
             text='',
             mouse_callbacks={
-                'Button1' : lazy.spawn('pcmanfm'),
+                'Button1' : lazy.spawn('thunar'),
+            },
+        ),
+        widget.TextBox(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            font="FontAwesome6Free",
+            fontsize=14,
+            text='',
+            mouse_callbacks={
+                'Button1' : lazy.spawn('xfce4-screenshooter -r'),
             }
         ),
-        # widget.StatusNotifier(
-        #     background=colors['color15'],
-        # ),
+        widget.TextBox(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            font="FontAwesome6Free",
+            fontsize=14,
+            text='',
+            mouse_callbacks={
+                'Button1' : lazy.spawn('blueman-manager'),
+            }
+        ),
+        widget.TextBox(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            font="FontAwesome6Free",
+            fontsize=14,
+            text='',
+            mouse_callbacks={
+                'Button1' : lazy.spawn('alacritty -e nmtui'),
+            }
+        ),
+        # widget.Systray(),
         widget.Sep(
             background=colors['color15'],
             linewidth = 0,

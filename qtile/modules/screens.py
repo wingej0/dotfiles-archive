@@ -32,4 +32,5 @@ screens = [
         wallpaper=get_wallpaper(),
         wallpaper_mode="fill"
     ),
+    
 ]

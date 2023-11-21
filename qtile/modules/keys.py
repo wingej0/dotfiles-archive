@@ -159,7 +159,7 @@ keys.extend([
     Key(["mod1"], "Return", lazy.group['scratchpad'].dropdown_toggle('term')),
     Key(["mod1"], "v", lazy.group['scratchpad'].dropdown_toggle('volume')),
     Key(["mod1"], "Space", lazy.group['scratchpad'].dropdown_toggle('newTask')),
-    Key([mod], "w", lazy.group['scratchpad'].dropdown_toggle('wallpaper'))
+    Key([mod], "w", lazy.group['scratchpad'].dropdown_toggle('wallpaper')),
 ])
 
 # Drag floating layouts.
@@ -173,13 +173,13 @@ mouse = [
 
 # Application keybindings
 keys.extend([
-    Key([mod], "Escape", lazy.spawn("swaylock"),
+    Key([mod], "Escape", lazy.spawn("xflock4"),
         desc="Lock screen"),
     Key([mod, "shift"], "Return", lazy.spawn("thunar"),
         desc="Launch file browser"),
     Key([mod], "Space", lazy.spawn("xfce4-appfinder"),
         desc="Application launcher"),
-    Key(["control", "mod1"], "delete", lazy.spawn("wlogout"),
+    Key(["control", "mod1"], "delete", lazy.spawn("xfce4-session-logout"),
         desc="Launch powermenu"),
     Key([mod], "b", lazy.spawn("firefox"),
         desc="Launch web browser"),
@@ -191,6 +191,8 @@ keys.extend([
         desc="Launch Telegram"),
     Key([mod], "e", lazy.spawn("google-chrome-stable --app=https://tasks.google.com/embed/\?origin\=https://mail.google.com\&fullWidth\=1\&amp\;lfhs\=2"),
         desc="Launch Tasks"),
+    Key([mod], "v", lazy.spawn("copyq show"),
+        desc="Clipboard Manager"),
     
     # System76 Power Management
     Key(["control", "mod1"], "b", lazy.spawn("system76-power charge-thresholds --profile balanced"),
@@ -220,11 +222,11 @@ keys.extend([
     Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"),
         desc="Previous Song"),
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop"),
-        desc="Stop"),
+        desc="Stop music"),
+    Key([], "XF86TouchpadToggle", lazy.spawn("/home/wingej0/dotfiles/scripts/touchpad-toggle.sh"),
+        desc="Toggle Touchpad")
     # Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 5%+"),
     #     desc="Increase brightness"),
     # Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-"),
     #     desc="Decrease brightness"),
-    Key([], "Print", lazy.spawn("sh /home/wingej0/dotfiles/scripts/grim.sh"),
-        desc="Take a screenshot")
 ])
