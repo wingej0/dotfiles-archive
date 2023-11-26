@@ -1,6 +1,8 @@
+import os
+
 from modules.get_theme import get_wallpaper, colors
 from modules.groups import groups
-# from modules.hooks import *
+from modules.hooks import *
 from modules.keys import keys, mod
 from modules.layouts import layouts, floating_layout
 from modules.screens import screens
@@ -13,6 +15,8 @@ from libqtile.utils import guess_terminal
 
 from libqtile.backend.wayland import InputConfig
 
+os.environ["XDG_SESSION_DESKTOP"] = "qtile;wlroots"
+os.environ["XDG_CURRENT_DESKTOP"] = "qtile;wlroots"
 
 # Drag floating layouts.
 mouse = [

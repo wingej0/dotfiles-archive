@@ -2,7 +2,7 @@ import subprocess
 
 from libqtile import qtile
 from libqtile.command import lazy
-# from libqtile.widget import TextBox
+from libqtile.widget import TextBox
 from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
 from qtile_extras.widget.mixins import TooltipMixin
@@ -25,6 +25,21 @@ powerline_right = {
         )
     ]
 }
+
+# Tooltip definitions for wifi widget
+class WifiTextBox(TextBox, TooltipMixin):
+
+    def __init__(self, *args, **kwargs):
+        TextBox.__init__(self, *args, **kwargs)
+        TooltipMixin.__init__(self, **kwargs)
+        self.add_defaults(TooltipMixin.defaults)
+
+        # The tooltip text is set in the following variable
+        self.tooltip_background = colors['color0']
+        self.tooltip_color = colors['color15']
+        self.tooltip_padding = 10
+        self.tooltip_font = "Fira Code Nerd Font"
+        self.tooltip_text = subprocess.check_output("/home/wingej0/dotfiles/scripts/wifi.sh").decode("utf-8").strip()
 
 def init_widgets():
     widgets_list = [
@@ -179,10 +194,10 @@ def init_widgets():
             **powerline_right
         ),
         widget.TextBox(
+            font="FontAwesome6Free",
             text="",
             background=colors['color1'],
             foreground=colors['color15'],
-            **widget_defaults
         ),
         widget.CheckUpdates(
             background=colors['color1'],
@@ -287,7 +302,7 @@ def init_widgets():
                 'Button1' : lazy.spawn('blueman-manager'),
             }
         ),
-        widget.TextBox(
+        WifiTextBox(
             background=colors['color15'],
             foreground=colors['color0'],
             font="FontAwesome6Free",
@@ -297,7 +312,6 @@ def init_widgets():
                 'Button1' : lazy.spawn('alacritty -e nmtui'),
             }
         ),
-        # widget.Systray(),
         widget.Sep(
             background=colors['color15'],
             linewidth = 0,

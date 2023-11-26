@@ -224,9 +224,9 @@ keys.extend([
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop"),
         desc="Stop music"),
     Key([], "XF86TouchpadToggle", lazy.spawn("/home/wingej0/dotfiles/scripts/touchpad-toggle.sh"),
-        desc="Toggle Touchpad")
-    # Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 5%+"),
-    #     desc="Increase brightness"),
-    # Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-"),
-    #     desc="Decrease brightness"),
+        desc="Toggle Touchpad"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 5%+"),
+        desc="Increase brightness"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-"),
+        desc="Decrease brightness"),
 ])
