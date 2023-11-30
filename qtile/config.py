@@ -15,8 +15,8 @@ from libqtile.utils import guess_terminal
 
 from libqtile.backend.wayland import InputConfig
 
-os.environ["XDG_SESSION_DESKTOP"] = "qtile;wlroots"
-os.environ["XDG_CURRENT_DESKTOP"] = "qtile;wlroots"
+os.environ["XDG_SESSION_DESKTOP"] = "qtile:wlroots"
+os.environ["XDG_CURRENT_DESKTOP"] = "qtile:wlroots"
 
 # Drag floating layouts.
 mouse = [

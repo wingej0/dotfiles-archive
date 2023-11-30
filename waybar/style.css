@@ -1,0 +1,142 @@
+@import '../../.cache/wal/colors-waybar.css';
+
+window#waybar {
+    background-color: rgba(0,0,0,0.8);
+    border-bottom: 0px solid #ffffff;
+    /* color: #FFFFFF; */
+    background: transparent;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+/* Left Ovals */
+#leftoval, #leftoval2 {
+    background: @color15;
+    margin: 0 10px 0 0;
+    padding: 0 15px 0 0;
+    border-radius: 15px;
+}
+
+#leftoval2 {
+    padding-left: 15px;
+}
+
+#leftoval3 {
+    background: @color1;
+    margin: 0 10px;
+    padding: 0 15px;
+    border-radius: 15px;
+}
+
+#custom-branding {
+    color: @color15;
+    font-family: "Fira Code Nerd Font";
+    font-weight: bold;
+    background: @color11 url("img/arch.png") no-repeat 5px center;
+    margin: 0;
+    padding: 0 15px 0 30px;
+    border-radius: 15px;
+}
+
+#custom-memicon, 
+#custom-cpuicon, 
+#custom-tempicon,
+#custom-backlighticon,
+#custom-volumeicon,
+#custom-batteryicon {
+    font-family: FontAwesome6Free;
+    font-size: 14px;
+    color: @color0;
+    margin: 0 7px;
+}
+
+#custom-updatesicon {
+    font-family: FontAwesome6Free;
+    font-size: 14px;
+    color: @color15;
+    margin: 0 5px;
+}
+
+#custom-updates {
+    font-family: "Fira Code Nerd Font";
+    font-size: 14px;
+    color: @color15;
+}
+
+#memory, 
+#cpu, 
+#temperature,
+#backlight,
+#pulseaudio,
+#battery,
+#custom-system76power {
+    font-family: "Fira Code Nerd Font";
+    font-size: 14px;
+    color: @color0;
+}
+
+/* Workspaces */
+ #workspaces {
+    font-family: FontAwesome6Free;
+    background: @color11;
+    margin: 0;
+    padding: 0px 10px;
+    border-radius: 15px;
+    border: 0px;
+    font-size: 14px;
+    color: @color15;
+}
+
+#workspaces button {
+    padding: 0px 3px;
+    margin: 4px 3px;
+    border-radius: 15px;
+    border: 0px;
+    color: @color6;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+    background: url("img/active.png") no-repeat center center;
+    min-width: 40px;
+    transition: all 0.3s ease-in-out;
+    opacity:1.0;
+}
+
+#workspaces button:hover, #workspaces button.visible  {
+    color: @color15;
+    opacity: 1;
+}
+
+/* Right Ovals */
+#rightoval, #rightoval2 {
+    background: @color15;
+    margin: 0 0 0 10px;
+    padding: 0 0 0 15px;
+    border-radius: 15px;
+}
+
+#rightoval2 {
+    padding: 0 10px;
+}
+
+#clock {
+    color: @color15;
+    font-family: "Fira Code Nerd Font";
+    font-weight: bold;
+    background: @color11;
+    margin: 0;
+    padding: 0 15px 0 10px;
+    border-radius: 15px;
+}
+
+#custom-screenshot,
+#custom-filemanager,
+#custom-cliphist,
+#custom-wallpaper,
+#custom-help {
+    font-family: FontAwesome6Free;
+    font-size: 16px;
+    color: @color0;
+    margin: 0 4px;
+}

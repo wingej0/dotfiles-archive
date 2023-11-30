@@ -173,11 +173,11 @@ mouse = [
 
 # Application keybindings
 keys.extend([
-    Key([mod], "Escape", lazy.spawn("xflock4"),
+    Key([mod], "Escape", lazy.spawn("swaylock"),
         desc="Lock screen"),
     Key([mod, "shift"], "Return", lazy.spawn("thunar"),
         desc="Launch file browser"),
-    Key([mod], "Space", lazy.spawn("xfce4-appfinder"),
+    Key([mod], "Space", lazy.spawn("rofi -show drun"),
         desc="Application launcher"),
     Key(["control", "mod1"], "delete", lazy.spawn("xfce4-session-logout"),
         desc="Launch powermenu"),
@@ -191,7 +191,7 @@ keys.extend([
         desc="Launch Telegram"),
     Key([mod], "e", lazy.spawn("google-chrome-stable --app=https://tasks.google.com/embed/\?origin\=https://mail.google.com\&fullWidth\=1\&amp\;lfhs\=2"),
         desc="Launch Tasks"),
-    Key([mod], "v", lazy.spawn("copyq show"),
+    Key([mod], "v", lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh"),
         desc="Clipboard Manager"),
     
     # System76 Power Management

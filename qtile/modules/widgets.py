@@ -136,7 +136,7 @@ def init_widgets():
         widget.Volume(
             background=colors['color15'],
             foreground=colors['color0'],
-            # get_volume_command="/home/wingej0/dotfiles/qtile/scripts/volume.sh",
+            get_volume_command="/home/wingej0/dotfiles/qtile/scripts/volume.sh",
             **widget_defaults
         ),
         widget.Sep(
@@ -269,7 +269,7 @@ def init_widgets():
             fontsize=14,
             text='',
             mouse_callbacks={
-                'Button1' : lazy.spawn('copyq show'),
+                'Button1' : lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh"),
             }
         ),
         widget.TextBox(
@@ -289,7 +289,7 @@ def init_widgets():
             fontsize=14,
             text='',
             mouse_callbacks={
-                'Button1' : lazy.spawn('xfce4-screenshooter -r'),
+                'Button1' : lazy.spawn('/home/wingej0/dotfiles/scripts/grim.sh'),
             }
         ),
         widget.TextBox(

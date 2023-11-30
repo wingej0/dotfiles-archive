@@ -1,0 +1,67 @@
+{
+    "layer": "top",
+    "height": 32,
+    "margin": 6,   
+    "spacing": 0,
+    "include": ["~/dotfiles/waybar/modules.json"],
+    "modules-left": [
+       "group/leftoval",
+       "group/leftoval2",
+       "group/leftoval3"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],  
+    "modules-right": [
+        "group/rightoval2",
+        "group/rightoval"
+    ],
+    "group/leftoval" : {
+        "orientation" : "horizontal",
+        "modules" : [
+            "custom/branding",
+            "custom/memicon",
+            "memory",
+            "custom/cpuicon",
+            "cpu",
+            "custom/tempicon",
+            "temperature"
+        ]
+    },
+    "group/leftoval2" : {
+        "orientation" : "horizontal",
+        "modules" : [
+            "custom/backlighticon",
+            "backlight",
+            "custom/volumeicon",
+            "pulseaudio"
+        ]
+    },
+    "group/leftoval3" : {
+        "orientation" : "horizontal",
+        "modules" : [
+            "custom/updatesicon",
+            "custom/updates"
+        ]
+    },
+    "group/rightoval" : {
+        "orientation" : "horizontal",
+        "modules" : [
+            "custom/help",
+            "custom/wallpaper",
+            "custom/cliphist",
+            "custom/filemanager",
+            "custom/screenshot",
+            "tray",
+            "clock"
+        ]
+    },
+    "group/rightoval2" : {
+        "orientation" : "horizontal",
+        "modules" : [
+            "custom/batteryicon",
+            "battery",
+            "custom/system76power"
+        ]
+    }
+}

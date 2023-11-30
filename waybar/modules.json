@@ -1,0 +1,125 @@
+{
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": "",
+            "11": "",
+            "12": ""
+        },
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        },
+        "active-only" : true
+    },
+    "custom/branding" : {
+        "format" : " Arch",
+        "on-click" : "rofi -show drun -replace",
+        "tooltip" : false  
+    },
+    "custom/memicon" : {
+        "format" : "",
+        "tooltip" : false 
+    },
+    "custom/cpuicon" : {
+        "format" : "",
+        "tooltip" : false 
+    },
+    "custom/tempicon" : {
+        "format" : "",
+        "tooltip" : false 
+    },
+    "custom/backlighticon" : {
+        "format" : "",
+        "tooltip" : false
+    },
+    "custom/volumeicon" : {
+        "format" : "",
+        "tooltip" : false
+    },
+    "custom/screenshot" : {
+        "format" : "",
+        "tooltip" : false,
+        "on-click" : "~/dotfiles/scripts/grim.sh"
+    },
+    "custom/filemanager" : {
+        "format" : "",
+        "tooltip" : false,
+        "on-click" : "thunar"
+    },
+    "custom/cliphist" : {
+        "format" : "",
+        "tooltip" : false,
+        "on-click" : "~/dotfiles/scripts/clipboard.sh"
+    },
+    "custom/wallpaper" : {
+        "format" : "",
+        "tooltip" : false,
+        "on-click" : "foot -e ranger ~/.wallpapers"
+    },
+    "custom/help" : {
+        "format" : "",
+        "tooltip" : false,
+        "on-click" : "google-chrome-stable --app=https://bard.google.com"
+    },
+    "custom/system76power" : {
+        "format" : " {}",
+        "exec" : "~/dotfiles/scripts/power-profile.sh",
+        "on-click" : "alacritty -e ~/dotfiles/scripts/power-management.sh",
+        "restart-interval" : 60
+    },
+    "custom/batteryicon" : {
+        "format" : "",
+        "tooltip" : false
+    },
+    "custom/updates" : {
+        "format" : "{}",
+        "restart-interval" : 360,
+        "tooltip" : false,
+        "exec" : "checkupdates | wc -l",
+        "on-click" : "alacritty -e checkupdates"
+    },
+    "custom/updatesicon" : {
+        "format" : "",
+        "tooltip" : false
+    },
+    "memory" : {
+        "format" : "{percentage}% |",
+        "on-click" : "alacritty -e htop",
+        "tooltip" : true,
+        "tooltip-format" : "{used:0.1f}G / {total:0.1f}G"
+    },
+    "clock" : {
+        "interval" : 60,
+        "format" : "{: %b %d | %I:%M %p}",
+        "on-click" : "wlogout"
+    },
+    "cpu" : {
+        "format" : "{usage}% |"
+    },
+    "temperature" : {
+        "format" : "{}°C"
+    },
+    "backlight" : {
+        "device": "intel_backlight",
+        "format": "{percent}% |",
+    },
+    "pulseaudio" : {
+        "format" : "{volume}%"
+    },
+    "tray" : {
+        "icon-size": 18,
+        "spacing": 1
+    },
+    "battery" : {
+        "format" : "{}%"
+    }
+}

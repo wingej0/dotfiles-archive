@@ -17,7 +17,7 @@ layouts = [
     layout.MonadThreeCol(**layout_theme),
     layout.Floating(**layout_theme),
     layout.RatioTile(**layout_theme),
-    layout.Max(**layout_theme)
+    layout.Max(**layout_theme),
 ]
 
 floating_layout = layout.Floating(

@@ -18,7 +18,14 @@ screens = [
         wallpaper_mode="fill"
     ),
     Screen(
-        wallpaper="/home/wingej0/Pictures/kids1.jpg",
+        top=bar.Bar(
+            widgets=init_widgets(),
+            background='#00000000',
+            margin=8,
+            size=30,
+            opacity=0.9
+        ),
+        wallpaper=get_wallpaper(),
         wallpaper_mode="fill"
     ),
     Screen(
@@ -32,5 +39,8 @@ screens = [
         wallpaper=get_wallpaper(),
         wallpaper_mode="fill"
     ),
-    
+    Screen(
+        wallpaper='/home/wingej0/Pictures/kids1.jpg',
+        wallpaper_mode="fill"
+    ),
 ]
