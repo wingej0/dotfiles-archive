@@ -1,5 +1,6 @@
 {
     "layer": "top",
+    "output": "!HDMI-A-1",
     "height": 32,
     "margin": 6,   
     "spacing": 0,
@@ -13,6 +14,7 @@
         "hyprland/workspaces"
     ],  
     "modules-right": [
+        "group/rightoval3",
         "group/rightoval2",
         "group/rightoval"
     ],
@@ -48,7 +50,6 @@
         "orientation" : "horizontal",
         "modules" : [
             "custom/help",
-            "custom/wallpaper",
             "custom/cliphist",
             "custom/filemanager",
             "custom/screenshot",
@@ -62,6 +63,13 @@
             "custom/batteryicon",
             "battery",
             "custom/system76power"
+        ]
+    },
+    "group/rightoval3" : {
+        "orientation" : "horizontal",
+        "modules" : [
+            "custom/monitoricon",
+            "custom/monitors"
         ]
     }
 }

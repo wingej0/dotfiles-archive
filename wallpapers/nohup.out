@@ -1,0 +1,41 @@
+[2023-12-01 15:38:20.736] [info] Using configuration file /home/wingej0/.config/waybar/config
+[2023-12-01 15:38:20.736] [info] Including resource file: ~/dotfiles/waybar/modules.json
+[2023-12-01 15:38:20.740] [info] Using CSS file /home/wingej0/.config/waybar/style.css
+[2023-12-01 15:38:20.754] [warning] Mapping is not an object
+[2023-12-01 15:38:20.754] [info] Hyprland IPC starting
+
+(waybar:2128): GLib-GObject-CRITICAL **: 15:38:20.787: ../glib/gobject/gsignal.c:2088: type 'GtkWindow' is already overridden for signal id '73'
+
+(waybar:2128): GLib-GObject-CRITICAL **: 15:38:20.787: ../glib/gobject/gsignal.c:2088: type 'GtkWindow' is already overridden for signal id '72'
+[2023-12-01 15:38:20.792] [warning] Mapping is not an object
+
+(waybar:2128): GLib-GObject-CRITICAL **: 15:38:20.803: ../glib/gobject/gsignal.c:2088: type 'GtkWindow' is already overridden for signal id '73'
+
+(waybar:2128): GLib-GObject-CRITICAL **: 15:38:20.803: ../glib/gobject/gsignal.c:2088: type 'GtkWindow' is already overridden for signal id '72'
+[2023-12-01 15:38:20.808] [warning] Mapping is not an object
+==> ERROR: Cannot fetch updates
+
+** (waybar:2128): WARNING **: 15:38:21.060: Status Notifier Item with bus name ':1.6' and object path '/org/ayatana/NotificationItem/nm_applet' is already registered
+[2023-12-01 15:38:21.266] [info] Bar configured (width: 1908, height: 32) for output: eDP-1
+[2023-12-01 15:38:21.267] [info] Bar configured (width: 1908, height: 32) for output: DP-7
+[2023-12-01 15:38:21.267] [info] Bar configured (width: 1908, height: 32) for output: DP-6
+ok
+
+** (waybar:2417): CRITICAL **: 15:38:38.048: static void Glib::DispatchNotifier::unreference_instance(Glib::DispatchNotifier*, const Glib::Dispatcher*): assertion 'instance == notifier' failed
+
+** (waybar:2418): CRITICAL **: 15:38:38.051: static void Glib::DispatchNotifier::unreference_instance(Glib::DispatchNotifier*, const Glib::Dispatcher*): assertion 'instance == notifier' failed
+
+** (waybar:2419): CRITICAL **: 15:38:38.054: static void Glib::DispatchNotifier::unreference_instance(Glib::DispatchNotifier*, const Glib::Dispatcher*): assertion 'instance == notifier' failed
+[2023-12-01 15:38:38.058] [info] Bar removed from output: eDP-1
+ok
+Terminated
+[2023-12-01 17:44:50.954] [info] Using configuration file /home/wingej0/.config/waybar/config
+[2023-12-01 17:44:50.954] [info] Including resource file: ~/dotfiles/waybar/modules.json
+[2023-12-01 17:44:50.958] [info] Using CSS file /home/wingej0/.config/waybar/style.css
+[2023-12-01 17:44:50.973] [warning] Mapping is not an object
+[2023-12-01 17:44:50.973] [info] Hyprland IPC starting
+[2023-12-01 17:44:51.143] [info] Bar configured (width: 1908, height: 32) for output: eDP-1
+
+** (waybar:10693): WARNING **: 17:44:51.149: Status Notifier Item with bus name ':1.6' and object path '/org/ayatana/NotificationItem/nm_applet' is already registered
+
+** (waybar:10693): WARNING **: 17:44:51.279: Status Notifier Item with bus name ':1.6' and object path '/org/ayatana/NotificationItem/nm_applet' is already registered

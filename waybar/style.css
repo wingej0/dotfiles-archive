@@ -23,7 +23,7 @@ window#waybar {
 
 #leftoval3 {
     background: @color1;
-    margin: 0 10px;
+    margin: 0 10px 0 0;
     padding: 0 15px;
     border-radius: 15px;
 }
@@ -50,14 +50,16 @@ window#waybar {
     margin: 0 7px;
 }
 
-#custom-updatesicon {
+#custom-updatesicon,
+#custom-monitoricon {
     font-family: FontAwesome6Free;
     font-size: 14px;
     color: @color15;
     margin: 0 5px;
 }
 
-#custom-updates {
+#custom-updates,
+#custom-monitors {
     font-family: "Fira Code Nerd Font";
     font-size: 14px;
     color: @color15;
@@ -118,6 +120,13 @@ window#waybar {
 
 #rightoval2 {
     padding: 0 10px;
+}
+
+#rightoval3 {
+    background: @color1;
+    margin: 0 0 0 10px;
+    padding: 0 15px;
+    border-radius: 15px;
 }
 
 #clock {

@@ -1,0 +1,11 @@
+[pyprland]
+plugins = [
+    "scratchpads"
+]
+
+[scratchpads.wallpaper]
+"command" = "foot --title=wallpaper -e ranger /home/wingej0/.wallpapers"
+"size" = "80% 80%"
+"animation" = "fromTop"
+"lazy" = true
+"class" = "wallpaper"

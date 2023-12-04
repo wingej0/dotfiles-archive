@@ -60,11 +60,12 @@
         "tooltip" : false,
         "on-click" : "~/dotfiles/scripts/clipboard.sh"
     },
-    "custom/wallpaper" : {
-        "format" : "",
-        "tooltip" : false,
-        "on-click" : "foot -e ranger ~/.wallpapers"
-    },
+    // Using Variety for a wallpaper switcher instead
+    // "custom/wallpaper" : {
+    //     "format" : "",
+    //     "tooltip" : false,
+    //     "on-click" : "foot -e ranger ~/.wallpapers"
+    // },
     "custom/help" : {
         "format" : "",
         "tooltip" : false,
@@ -82,7 +83,7 @@
     },
     "custom/updates" : {
         "format" : "{}",
-        "restart-interval" : 360,
+        "restart-interval" : 60,
         "tooltip" : false,
         "exec" : "checkupdates | wc -l",
         "on-click" : "alacritty -e checkupdates"
@@ -90,6 +91,17 @@
     "custom/updatesicon" : {
         "format" : "",
         "tooltip" : false
+    },
+    "custom/monitoricon" : {
+        "format" : "",
+        "tooltip" : false
+    },
+    "custom/monitors" : {
+        "format" : {},
+        "restart-interval" : 30,
+        "tooltip" : false,
+        "exec" : "hyprctl monitors | grep Monitor | wc -l",
+        "on-click" : "hyprctl keyword monitor 'eDP-1, disable'"
     },
     "memory" : {
         "format" : "{percentage}% |",
@@ -116,7 +128,7 @@
         "format" : "{volume}%"
     },
     "tray" : {
-        "icon-size": 18,
+        "icon-size": 20,
         "spacing": 1
     },
     "battery" : {

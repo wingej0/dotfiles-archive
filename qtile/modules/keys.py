@@ -183,7 +183,7 @@ keys.extend([
         desc="Launch powermenu"),
     Key([mod], "b", lazy.spawn("firefox"),
         desc="Launch web browser"),
-    Key([mod], "m", lazy.spawn("mailspring"),
+    Key([mod], "m", lazy.spawn("flatpak run com.getmailspring.Mailspring --password-store='gnome-libsecret'"),
         desc="Launch email client"),
     Key([mod], "c", lazy.spawn("google-chrome-stable --app=https://calendar.google.com"),
         desc="Launch Calendar"),
