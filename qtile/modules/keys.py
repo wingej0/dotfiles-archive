@@ -159,7 +159,6 @@ keys.extend([
     Key(["mod1"], "Return", lazy.group['scratchpad'].dropdown_toggle('term')),
     Key(["mod1"], "v", lazy.group['scratchpad'].dropdown_toggle('volume')),
     Key(["mod1"], "Space", lazy.group['scratchpad'].dropdown_toggle('newTask')),
-    Key([mod], "w", lazy.group['scratchpad'].dropdown_toggle('wallpaper')),
 ])
 
 # Drag floating layouts.
@@ -193,6 +192,14 @@ keys.extend([
         desc="Launch Tasks"),
     Key([mod], "v", lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh"),
         desc="Clipboard Manager"),
+    Key([mod], "w", lazy.spawn("variety -n"),
+        desc="Randomly select a new wallpaper"),
+    Key([mod, "shift"], "w", lazy.spawn("variety -p"),
+        desc="Go back to previous wallpaper"),
+    Key(["mod1"], "w", lazy.spawn("variety --selector"),
+        desc="Open wallpaper selector"),
+    Key([mod, "shift"], "f", lazy.spawn("variety -f"),
+        desc="Save current wallpaper to favorites"),
     
     # System76 Power Management
     Key(["control", "mod1"], "b", lazy.spawn("system76-power charge-thresholds --profile balanced"),

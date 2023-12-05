@@ -67,17 +67,19 @@ def init_widgets():
             **powerline_left,
         ),
         widget.TextBox(
-            text=' ',
+            text='',
+            font="FontAwesome6Free",
+            fontsize=14,
             background=colors['color15'],
             foreground=colors['color0'],
             margin=0,
-            padding=0,
-            **widget_defaults
+            padding=5,
         ),        
         widget.Memory(
             background=colors['color15'],
             foreground=colors['color0'],
-            format= '{MemUsed: .0f}{mm}/{MemTotal:.0f}{mm}',
+            format='{MemPercent}%',
+            # format= '{MemUsed: .0f}{mm}/{MemTotal:.0f}{mm}',
             measure_mem="M",
             margin=0,
             padding=0,
@@ -90,11 +92,35 @@ def init_widgets():
             size_percent=60
         ), 
         widget.TextBox(
+            text='',
+            font="FontAwesome6Free",
+            fontsize=14,
+            background=colors['color15'],
+            foreground=colors['color0'],
+            margin=0,
+            padding=5,
+        ),        
+        widget.CPU(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            format='{load_percent}%',
+            margin=0,
+            padding=0,
+            **widget_defaults
+        ),
+        widget.Sep(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            padding=10,
+            size_percent=60
+        ), 
+        widget.TextBox(
+            text='',
+            font="FontAwesome6Free",
+            fontsize=14,
             background=colors['color15'],
             foreground=colors['color0'],
             padding=5,
-            text="",
-            **widget_defaults
         ),
         widget.ThermalSensor(
             background=colors['color15'],
@@ -108,10 +134,11 @@ def init_widgets():
             **powerline_right
         ), 
         widget.TextBox(
+            text='',
+            font="FontAwesome6Free",
+            fontsize=14,
             background=colors['color15'],
             foreground=colors['color0'],
-            text="󰃞",
-            **widget_defaults
         ),
         widget.GenPollText(
             background=colors['color15'],
@@ -127,11 +154,11 @@ def init_widgets():
             size_percent=60
         ), 
         widget.TextBox(
+            font="FontAwesome6Free",
+            fontsize=14,
             background=colors['color15'],
             foreground=colors['color0'],
-            padding=5,
             text="",
-            **widget_defaults
         ),
         widget.Volume(
             background=colors['color15'],
@@ -215,10 +242,11 @@ def init_widgets():
             **powerline_right
         ),
         widget.TextBox(
+            font="FontAwesome6Free",
+            fontsize=14,
             background=colors['color15'],
             foreground=colors['color0'],
             text="",
-            **widget_defaults
         ),
         widget.Battery(
             background=colors['color15'],
@@ -259,7 +287,7 @@ def init_widgets():
             fontsize=14,
             text='',
             mouse_callbacks={
-                'Button1' : lazy.group['scratchpad'].dropdown_toggle('wallpaper')
+                'Button1' : lazy.spawn("variety --selector")
             }
         ),
         widget.TextBox(

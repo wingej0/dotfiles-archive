@@ -19,3 +19,9 @@ sleep 2
 # start xdg-desktop-portal
 /usr/lib/xdg-desktop-portal &
 sleep 1
+
+# Set GDK Backend
+GDK_BACKEND=wayland,x11
+
+# Set QT Backend
+QT_QPA_PLATFORM=wayland;xcb

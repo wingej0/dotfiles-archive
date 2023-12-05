@@ -3,9 +3,30 @@ plugins = [
     "scratchpads"
 ]
 
-[scratchpads.wallpaper]
-"command" = "foot --title=wallpaper -e ranger /home/wingej0/.wallpapers"
+[scratchpads.term]
+"command" = "alacritty --class=scratchpad"
 "size" = "80% 80%"
 "animation" = "fromTop"
 "lazy" = true
-"class" = "wallpaper"
+"class" = "scratchpad"
+
+[scratchpads.jupyter]
+"command" = "alacritty --class=jupyter"
+"size" = "80% 80%"
+"animation" = "fromTop"
+"lazy" = true
+"class" = "jupyter"
+
+[scratchpads.tasks]
+"command" = "alacritty --class=tasks -e /home/wingej0/scripts/tasks/tasks.py"
+"size" = "80% 5%"
+"animation" = "fromTop"
+"lazy" = true
+"class" = "tasks"
+
+[scratchpads.volume]
+"command" = "pavucontrol --class=volume"
+"size" = "80% 80%"
+"animation" = "fromTop"
+"lazy" = true
+"class" = "volume"
