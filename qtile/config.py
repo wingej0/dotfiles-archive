@@ -8,15 +8,17 @@ from modules.layouts import layouts, floating_layout
 from modules.screens import screens
 from modules.scratchpads import *
 
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 from libqtile.backend.wayland import InputConfig
 
-os.environ["XDG_SESSION_DESKTOP"] = "qtile:wlroots"
-os.environ["XDG_CURRENT_DESKTOP"] = "qtile:wlroots"
+# Set xdg variables in Wayland to enable screensharing 
+if qtile.core.name == "wayland":
+    os.environ["XDG_SESSION_DESKTOP"] = "qtile:wlroots"
+    os.environ["XDG_CURRENT_DESKTOP"] = "qtile:wlroots"
 
 # Drag floating layouts.
 mouse = [

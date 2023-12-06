@@ -1,3 +1,4 @@
+from libqtile import qtile
 from libqtile.config import Click, Drag, Key
 from libqtile.command import lazy
 
@@ -12,8 +13,6 @@ keys = [
         desc="Launch terminal"),
 
     # Qtile System Actions
-    Key([mod, "shift"], "r", lazy.reload_config(),
-        desc="Restart Qtile"),
     Key([mod, "shift"], "q", lazy.shutdown(),
         desc="Shutdown Qtile"),
 
@@ -172,14 +171,10 @@ mouse = [
 
 # Application keybindings
 keys.extend([
-    Key([mod], "Escape", lazy.spawn("swaylock"),
-        desc="Lock screen"),
     Key([mod, "shift"], "Return", lazy.spawn("thunar"),
         desc="Launch file browser"),
     Key([mod], "Space", lazy.spawn("rofi -show drun"),
         desc="Application launcher"),
-    Key(["control", "mod1"], "delete", lazy.spawn("xfce4-session-logout"),
-        desc="Launch powermenu"),
     Key([mod], "b", lazy.spawn("firefox"),
         desc="Launch web browser"),
     Key([mod], "m", lazy.spawn("flatpak run com.getmailspring.Mailspring --password-store='gnome-libsecret'"),
@@ -190,15 +185,13 @@ keys.extend([
         desc="Launch Telegram"),
     Key([mod], "e", lazy.spawn("google-chrome-stable --app=https://tasks.google.com/embed/\?origin\=https://mail.google.com\&fullWidth\=1\&amp\;lfhs\=2"),
         desc="Launch Tasks"),
-    Key([mod], "v", lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh"),
-        desc="Clipboard Manager"),
     Key([mod], "w", lazy.spawn("variety -n"),
         desc="Randomly select a new wallpaper"),
     Key([mod, "shift"], "w", lazy.spawn("variety -p"),
         desc="Go back to previous wallpaper"),
     Key(["mod1"], "w", lazy.spawn("variety --selector"),
         desc="Open wallpaper selector"),
-    Key([mod, "shift"], "f", lazy.spawn("variety -f"),
+    Key(["mod1"], "f", lazy.spawn("variety -f"),
         desc="Save current wallpaper to favorites"),
     
     # System76 Power Management
@@ -230,10 +223,33 @@ keys.extend([
         desc="Previous Song"),
     Key([], "XF86AudioStop", lazy.spawn("playerctl stop"),
         desc="Stop music"),
-    Key([], "XF86TouchpadToggle", lazy.spawn("/home/wingej0/dotfiles/scripts/touchpad-toggle.sh"),
-        desc="Toggle Touchpad"),
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 5%+"),
         desc="Increase brightness"),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-"),
         desc="Decrease brightness"),
 ])
+
+# Add X11-specific keybindings
+if qtile.core.name == "x11":
+    keys.extend([
+        Key([mod, "shift"], "r", lazy.restart(),
+            desc="Restart Qtile"),
+        Key([mod], "Escape", lazy.spawn("betterlockscreen -l"),
+            desc="Lock screen"),
+    ])
+# Add Wayland-specific keybindings
+elif qtile.core.name == "wayland":
+    keys.extend([
+        Key([mod, "shift"], "r", lazy.reload_config(),
+            desc="Reload Qtile config"),
+        Key([mod], "Escape", lazy.spawn("swaylock"),
+            desc="Lock screen"),
+        Key(["control", "mod1"], "delete", lazy.spawn("wlogout"),
+            desc="Launch powermenu"),
+        Key([mod], "v", lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh"),
+            desc="Clipboard Manager"),
+        Key([], "XF86TouchpadToggle", lazy.spawn("/home/wingej0/dotfiles/scripts/touchpad-toggle.sh"),
+            desc="Toggle Touchpad"),
+    ])
+
+

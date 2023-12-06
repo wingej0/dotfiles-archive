@@ -9,4 +9,5 @@ system76-power daemon &
 /usr/lib/system76-driver/system76-user-daemon &
 wl-paste --type text --watch cliphist store &
 wl-paste --type image --watch cliphist store &
-variety
+cp ~/dotfiles/qtile/scripts/variety-wayland.sh ~/.config/variety/scripts/set_wallpaper &
+variety 

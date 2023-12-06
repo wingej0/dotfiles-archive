@@ -295,30 +295,10 @@ def init_widgets():
             foreground=colors['color0'],
             font="FontAwesome6Free",
             fontsize=14,
-            text='',
-            mouse_callbacks={
-                'Button1' : lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh"),
-            }
-        ),
-        widget.TextBox(
-            background=colors['color15'],
-            foreground=colors['color0'],
-            font="FontAwesome6Free",
-            fontsize=14,
             text='',
             mouse_callbacks={
                 'Button1' : lazy.spawn('thunar'),
             },
-        ),
-        widget.TextBox(
-            background=colors['color15'],
-            foreground=colors['color0'],
-            font="FontAwesome6Free",
-            fontsize=14,
-            text='',
-            mouse_callbacks={
-                'Button1' : lazy.spawn('/home/wingej0/dotfiles/scripts/grim.sh'),
-            }
         ),
         widget.TextBox(
             background=colors['color15'],
@@ -359,4 +339,53 @@ def init_widgets():
         ),
     ]
 
+    if qtile.core.name == "x11":
+        clipboard = widget.TextBox(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            font="FontAwesome6Free",
+            fontsize=14,
+            text='',
+            mouse_callbacks={
+                'Button1' : lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/greenclip.sh"),
+            }
+        )
+
+        screenshot = widget.TextBox(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            font="FontAwesome6Free",
+            fontsize=14,
+            text='',
+            mouse_callbacks={
+                'Button1' : lazy.spawn('flameshot launcher'),
+            }
+        )
+    elif qtile.core.name == "wayland":
+        clipboard = widget.TextBox(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            font="FontAwesome6Free",
+            fontsize=14,
+            text='',
+            mouse_callbacks={
+                'Button1' : lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh"),
+            }
+        )
+
+        screenshot = widget.TextBox(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            font="FontAwesome6Free",
+            fontsize=14,
+            text='',
+            mouse_callbacks={
+                'Button1' : lazy.spawn('/home/wingej0/dotfiles/scripts/grim.sh'),
+            }
+        )
+
+    widgets_list.insert(38, clipboard)
+    widgets_list.insert(39, screenshot)
+
     return widgets_list
+    
