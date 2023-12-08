@@ -8,12 +8,10 @@ downgrade 11.3.0-1
 firmware-manager-git 0.1.5.r6.gfc93648-1
 google-chrome 120.0.6099.62-1
 i3lock-color 2.13.c.5-1
-nvm 0.39.5-1
 nwg-look 0.2.5-1
 openssl-1.0 1.0.2.u-6
 paru 2.0.1-1
 pyprland 1.6.7-1
-python-clickgen 2.1.9-1
 qtile-extras 0.23.0-1
 rofi-greenclip 4.2-2
 scid_vs_pc 4.24-3

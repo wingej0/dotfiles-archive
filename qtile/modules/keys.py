@@ -236,6 +236,10 @@ if qtile.core.name == "x11":
             desc="Restart Qtile"),
         Key([mod], "Escape", lazy.spawn("betterlockscreen -l"),
             desc="Lock screen"),
+        Key([mod], "v", lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/greenclip.sh"),
+            desc="Clipboard Manager"),
+        Key([], "XF86TouchpadToggle", lazy.spawn("/home/wingej0/dotfiles/scripts/touchpad-toggle.sh"),
+            desc="Toggle Touchpad"),
     ])
 # Add Wayland-specific keybindings
 elif qtile.core.name == "wayland":
@@ -248,8 +252,6 @@ elif qtile.core.name == "wayland":
             desc="Launch powermenu"),
         Key([mod], "v", lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh"),
             desc="Clipboard Manager"),
-        Key([], "XF86TouchpadToggle", lazy.spawn("/home/wingej0/dotfiles/scripts/touchpad-toggle.sh"),
-            desc="Toggle Touchpad"),
     ])
 
 

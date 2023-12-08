@@ -8,14 +8,13 @@ from modules.layouts import layouts, floating_layout
 from modules.screens import screens
 from modules.scratchpads import *
 
-from libqtile import bar, layout, qtile, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile import qtile
+from libqtile.config import Click, Drag
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 
 from libqtile.backend.wayland import InputConfig
 
-# Set xdg variables in Wayland to enable screensharing 
+# Set xdg variables in Wayland to enable screensharing in Wayland
 if qtile.core.name == "wayland":
     os.environ["XDG_SESSION_DESKTOP"] = "qtile:wlroots"
     os.environ["XDG_CURRENT_DESKTOP"] = "qtile:wlroots"
@@ -46,12 +45,5 @@ wl_input_rules = {
     "type:touchpad": InputConfig(tap=True, natural_scroll=True, dwt=True),
 }
 
-# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
-# string besides java UI toolkits; you can see several discussions on the
-# mailing lists, GitHub issues, and other WM documentation that suggest setting
-# this string if your java app doesn't work correctly. We may as well just lie
-# and say that we're a working one by default.
-#
-# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
-# java that happens to be on java's whitelist.
+# Name of the window manager
 wmname = "qtile"
