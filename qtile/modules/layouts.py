@@ -18,6 +18,12 @@ layouts = [
     layout.Floating(**layout_theme),
     layout.RatioTile(**layout_theme),
     layout.Max(**layout_theme),
+    layout.Spiral(
+        main_pane_ratio = 0.70,
+        ratio = 0.52,
+        new_client_position = "bottom",
+        **layout_theme
+    )
 ]
 
 floating_layout = layout.Floating(
