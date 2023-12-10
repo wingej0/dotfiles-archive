@@ -14,7 +14,7 @@ from libqtile.lazy import lazy
 
 from libqtile.backend.wayland import InputConfig
 
-# Set xdg variables in Wayland to enable screensharing in Wayland
+# Set xdg variables in Wayland to enable screensharing
 if qtile.core.name == "wayland":
     os.environ["XDG_SESSION_DESKTOP"] = "qtile:wlroots"
     os.environ["XDG_CURRENT_DESKTOP"] = "qtile:wlroots"
