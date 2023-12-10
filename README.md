@@ -1,6 +1,6 @@
 # dotfiles
 
-Dotfiles for Arch Linux.  My personal configs for Qtile and Hyprland.  Colors update from wallpaper using Pywal.  Wallpaper added randomly using Variety.
+Dotfiles for Arch Linux.  My personal configs for Qtile and Hyprland.  Colors update from wallpaper using Pywal.  Wallpaper added randomly using Variety.  Lots of stuff stolen from [Stephan Raabe](https://gitlab.com/stephan-raabe/dotfiles)
 
 ## Qtile Wayland
 ![Qtile Wayland](https://github.com/wingej0/dotfiles/blob/main/screenshots/qtile-wayland.png)
