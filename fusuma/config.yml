@@ -1,0 +1,14 @@
+swipe:
+  3:
+    left:
+      command: "qtile cmd-obj -o screen -f next_group"
+      threshold: 0.5 
+    right:
+      command: "qtile cmd-obj -o screen -f prev_group"
+      threshold: 0.5
+    up:
+      command: "rofi -show drun"
+      threshold: 0.5
+    down:
+      command: "rofi -show window"
+      threshold: 0.5

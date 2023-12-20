@@ -42,7 +42,7 @@ auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = {
-    "type:touchpad": InputConfig(tap=True, natural_scroll=True, dwt=True),
+    "type:touchpad": InputConfig(tap=True, natural_scroll=True, dwtp=True)
 }
 
 # Name of the window manager

@@ -149,3 +149,7 @@ window#waybar {
     color: @color0;
     margin: 0 4px;
 }
+
+#tray {
+    padding-right: 3px;
+}

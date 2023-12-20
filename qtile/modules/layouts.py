@@ -38,5 +38,9 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),  # GPG key password entry
         Match(title="Mailspring"),
         Match(func=lambda c: c.is_transient_for()),
-    ], fullscreen_border_width = 0, border_width = 0
+    ], 
+    fullscreen_border_width = 0, 
+    border_width = 4, 
+    border_focus = colors['color11'],
+    border_normal = colors['color1']
 )
