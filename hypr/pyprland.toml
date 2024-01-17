@@ -17,6 +17,13 @@ plugins = [
 "lazy" = true
 "class" = "jupyter"
 
+[scratchpads.angular]
+"command" = "alacritty --class=angular"
+"size" = "80% 80%"
+"animation" = "fromTop"
+"lazy" = true
+"class" = "angular"
+
 [scratchpads.tasks]
 "command" = "alacritty --class=tasks -e /home/wingej0/scripts/tasks/tasks.py"
 "size" = "80% 5%"

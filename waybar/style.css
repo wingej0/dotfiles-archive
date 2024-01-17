@@ -110,6 +110,10 @@ window#waybar {
     opacity: 1;
 }
 
+#workspaces button:hover {
+    background: none;
+}
+
 /* Right Ovals */
 #rightoval, #rightoval2 {
     background: @color15;

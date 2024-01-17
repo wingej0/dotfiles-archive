@@ -158,6 +158,8 @@ keys.extend([
     Key(["mod1"], "Return", lazy.group['scratchpad'].dropdown_toggle('term')),
     Key(["mod1"], "v", lazy.group['scratchpad'].dropdown_toggle('volume')),
     Key(["mod1"], "Space", lazy.group['scratchpad'].dropdown_toggle('newTask')),
+    Key([mod], "a", lazy.group['scratchpad'].dropdown_toggle('angular')),
+    Key([mod], "n", lazy.group['scratchpad'].dropdown_toggle('notebook')),
 ])
 
 # Drag floating layouts.
