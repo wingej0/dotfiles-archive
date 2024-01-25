@@ -28,6 +28,10 @@ powerline_right = {
 
 # Tooltip definitions for wifi widget
 class WifiTextBox(TextBox, TooltipMixin):
+    
+    defaults = [
+        ("update_interval", 10, "Update time in seconds")
+    ]
 
     def __init__(self, *args, **kwargs):
         TextBox.__init__(self, *args, **kwargs)
@@ -39,7 +43,14 @@ class WifiTextBox(TextBox, TooltipMixin):
         self.tooltip_color = colors['color15']
         self.tooltip_padding = 10
         self.tooltip_font = "Fira Code Nerd Font"
+        
+    def timer_setup(self):
+        # This is called once the widget is first configured by the bar
+        self.set_tooltip_text()
+
+    def set_tooltip_text(self):
         self.tooltip_text = subprocess.check_output("/home/wingej0/dotfiles/scripts/wifi.sh").decode("utf-8").strip()
+        self.timeout_add(self.update_interval, self.set_tooltip_text)
 
 def init_widgets():
     widgets_list = [
