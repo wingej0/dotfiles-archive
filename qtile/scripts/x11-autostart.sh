@@ -16,5 +16,5 @@ dunst &
 blueman-applet &
 greenclip daemon &
 cp ~/dotfiles/qtile/scripts/variety-x11.sh ~/.config/variety/scripts/set_wallpaper &
-variety &
+# variety &
 fusuma

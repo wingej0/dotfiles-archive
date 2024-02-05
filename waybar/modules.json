@@ -18,7 +18,7 @@
         "persistent-workspaces": {
             "*": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         },
-        "active-only" : true
+        "active-only" : false
     },
     "custom/branding" : {
         "format" : " Arch",
@@ -60,12 +60,6 @@
         "tooltip" : false,
         "on-click" : "~/dotfiles/scripts/clipboard.sh"
     },
-    // Using Variety for a wallpaper switcher instead
-    // "custom/wallpaper" : {
-    //     "format" : "",
-    //     "tooltip" : false,
-    //     "on-click" : "foot -e ranger ~/.wallpapers"
-    // },
     "custom/help" : {
         "format" : "",
         "tooltip" : false,
@@ -122,7 +116,7 @@
     },
     "backlight" : {
         "device": "intel_backlight",
-        "format": "{percent}% |",
+        "format": "{percent}% |"
     },
     "pulseaudio" : {
         "format" : "{volume}%"
