@@ -73,11 +73,8 @@
     },
     "custom/batteryicon" : {
         "format" : "",
-        "tooltip" : true,
-        "tooltip-format" : "{}",
-        "exec" : "~/dotfiles/scripts/power-profile.sh",
-        "on-click" : "alacritty -e ~/dotfiles/scripts/power-management.sh",
-        "restart-interval" : 60
+        "tooltip" : false,
+        "on-click" : "alacritty -e ~/dotfiles/scripts/power-management.sh"
     },
     "custom/updates" : {
         "format" : "{}",
