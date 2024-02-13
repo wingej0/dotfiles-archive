@@ -76,6 +76,10 @@ window#waybar {
     color: @color0;
 }
 
+#battery {
+    padding-right: 5px;
+}
+
 /* Workspaces */
  #workspaces {
     font-family: FontAwesome6Free;

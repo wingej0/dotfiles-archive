@@ -61,8 +61,7 @@
         "orientation" : "horizontal",
         "modules" : [
             "custom/batteryicon",
-            "battery",
-            "custom/system76power"
+            "battery"
         ]
     },
     "group/rightoval3" : {

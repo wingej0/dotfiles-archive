@@ -73,7 +73,11 @@
     },
     "custom/batteryicon" : {
         "format" : "",
-        "tooltip" : false
+        "tooltip" : true,
+        "tooltip-format" : "{}",
+        "exec" : "~/dotfiles/scripts/power-profile.sh",
+        "on-click" : "alacritty -e ~/dotfiles/scripts/power-management.sh",
+        "restart-interval" : 60
     },
     "custom/updates" : {
         "format" : "{}",
@@ -126,6 +130,8 @@
         "spacing": 1
     },
     "battery" : {
-        "format" : "{}%"
+        "format" : "{}%",
+        "tooltip" : true,
+        "tooltip-format" : "{time}"
     }
 }
