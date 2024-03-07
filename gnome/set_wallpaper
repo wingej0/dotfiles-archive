@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+image=$1
+
+# Create the color profile with pywal
+wal -i $image
+
+# Copy image to the .cache
+cp $image ~/.cache/current_wallpaper.jpg
+
+# Gnome 3, Unity
+gsettings set org.gnome.desktop.background picture-uri "file://$image" 2> /dev/null
+gsettings set org.gnome.desktop.background picture-uri-dark "file://$image" 2> /dev/null
+if [[ "$4" =~ ^(wallpaper|centered|scaled|stretched|zoom|spanned)$ ]]; then
+    gsettings set org.gnome.desktop.background picture-options "$4"
+fi
+if [ "$(gsettings get org.gnome.desktop.background picture-options)" == "'none'"  ]; then
+    gsettings set org.gnome.desktop.background picture-options 'zoom'
+fi
+
+# GNOME Screensaver / Lock screen - thanks to George C. de Araujo for the patch
+gsettings set org.gnome.desktop.screensaver picture-uri "file://$image" 2> /dev/null
+if [[ "$4" =~ ^(wallpaper|centered|scaled|stretched|zoom|spanned)$ ]]; then
+    gsettings set org.gnome.desktop.screensaver picture-options "$4"
+fi
+if [ "$(gsettings get org.gnome.desktop.screensaver picture-options)" == "'none'" ]; then
+    gsettings set org.gnome.desktop.screensaver picture-options 'zoom'
+fi
+

@@ -8,9 +8,9 @@ from libqtile.config import Screen
 screens = [
     Screen(
         top=bar.Bar(
-            widgets=init_widgets(1),
-            background='#0000003f',
-            margin=0,
+            widgets=init_widgets(),
+            background='#00000000',
+            margin=8,
             size=30,
             opacity=0.9
         ),
@@ -23,9 +23,9 @@ screens = [
     ),
     Screen(
         top=bar.Bar(
-            widgets=init_widgets(1),
-            background='#0000003f',
-            margin=0,
+            widgets=init_widgets(),
+            background='#00000000',
+            margin=8,
             size=30,
             opacity=0.9
         ),
@@ -34,9 +34,9 @@ screens = [
     ),
     Screen(
         top=bar.Bar(
-            widgets=init_widgets(1),
-            background='#0000003f',
-            margin=0,
+            widgets=init_widgets(),
+            background='#00000000',
+            margin=8,
             size=30,
             opacity=0.9
         ),

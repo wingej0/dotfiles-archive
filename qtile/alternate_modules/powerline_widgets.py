@@ -4,310 +4,269 @@ from libqtile import qtile
 from libqtile.command import lazy
 from libqtile.widget import TextBox
 from qtile_extras import widget
-from qtile_extras.widget.decorations import RectDecoration
+from qtile_extras.widget.decorations import PowerLineDecoration
+from qtile_extras.widget.mixins import TooltipMixin
 
 from .get_theme import colors
 from .widget_defaults import widget_defaults
 
-dark_widgets = {
-    "decorations" : [
-        RectDecoration(
-            colour = colors['color11'],
-            filled = True,
-            radius = 10,
-            padding_y = 4,
-            group = True
+powerline_left = {
+    "decorations": [
+        PowerLineDecoration(
+            path="rounded_left",
         )
     ]
 }
 
-light_widgets = {
-    "decorations" : [
-        RectDecoration(
-            colour = colors['color15'],
-            filled = True,
-            radius = 10,
-            padding_y = 4,
-            group = True
+powerline_right = {
+    "decorations": [
+        PowerLineDecoration(
+            path="rounded_right",
         )
     ]
 }
 
-mid_widgets = {
-    "decorations" : [
-        RectDecoration(
-            colour = colors['color1'],
-            filled = True,
-            radius = 10,
-            padding_y = 4,
-            group = True
-        )
+# Tooltip definitions for wifi widget
+class WifiTextBox(TextBox, TooltipMixin):
+    
+    defaults = [
+        ("update_interval", 10, "Update time in seconds")
     ]
-}
 
-def init_widgets(monitor):
+    def __init__(self, *args, **kwargs):
+        TextBox.__init__(self, *args, **kwargs)
+        TooltipMixin.__init__(self, **kwargs)
+        self.add_defaults(TooltipMixin.defaults)
+
+        # The tooltip text is set in the following variable
+        self.tooltip_background = colors['color0']
+        self.tooltip_color = colors['color15']
+        self.tooltip_padding = 10
+        self.tooltip_font = "Fira Code Nerd Font"
+        
+    def timer_setup(self):
+        # This is called once the widget is first configured by the bar
+        self.set_tooltip_text()
+
+    def set_tooltip_text(self):
+        self.tooltip_text = subprocess.check_output("/home/wingej0/dotfiles/scripts/wifi.sh").decode("utf-8").strip()
+        self.timeout_add(self.update_interval, self.set_tooltip_text)
+
+def init_widgets():
     widgets_list = [
         widget.Sep(
             linewidth = 0,
-            padding = 5
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **dark_widgets
+            **powerline_right,
         ),
         widget.TextBox(
+            background=colors['color11'],
             font="FontAwesome6Free",
+            fontsize=18,
+            foreground=colors['color15'],
+            text=""
+        ),
+        widget.TextBox(
+            background=colors['color11'],
+            font="Fira Code Nerd Font Bold",
             fontsize=14,
             foreground=colors['color15'],
-            text="",  
-            **dark_widgets
-        ),
-        widget.TextBox(
-            font="Fira Code Nerd Font Bold",
-            fontsize = 12,
-            foreground=colors['color15'],
             text="Qtile",
-            mouse_callbacks={
-                'Button1' : lazy.spawn('xfce4-appfinder'),
-            },
-            **dark_widgets          
         ),
         widget.Sep(
+            background=colors['color11'],
             linewidth = 0,
-            padding = 10,
-            **dark_widgets
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 10
-        ),widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **light_widgets
+            **powerline_left,
         ),
         widget.TextBox(
             text='',
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
+            background=colors['color15'],
             foreground=colors['color0'],
             margin=0,
             padding=5,
-            **light_widgets
         ),        
         widget.Memory(
+            background=colors['color15'],
             foreground=colors['color0'],
             format='{MemPercent}%',
+            # format= '{MemUsed: .0f}{mm}/{MemTotal:.0f}{mm}',
             measure_mem="M",
             margin=0,
             padding=0,
-            **widget_defaults,
-            **light_widgets
+            **widget_defaults
         ),
         widget.Sep(
+            background=colors['color15'],
             foreground=colors['color0'],
             padding=10,
-            size_percent=60,
-            **light_widgets
+            size_percent=60
         ), 
         widget.TextBox(
             text='',
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
+            background=colors['color15'],
             foreground=colors['color0'],
             margin=0,
             padding=5,
-            **light_widgets
         ),        
         widget.CPU(
+            background=colors['color15'],
             foreground=colors['color0'],
             format='{load_percent}%',
             margin=0,
             padding=0,
-            **widget_defaults,
-            **light_widgets
+            **widget_defaults
         ),
         widget.Sep(
+            background=colors['color15'],
             foreground=colors['color0'],
             padding=10,
-            size_percent=60,
-            **light_widgets
+            size_percent=60
         ), 
         widget.TextBox(
             text='',
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
+            background=colors['color15'],
             foreground=colors['color0'],
             padding=5,
-            **light_widgets
         ),
         widget.ThermalSensor(
+            background=colors['color15'],
             foreground=colors['color0'],
             **widget_defaults,
-            **light_widgets
+            **powerline_left
         ),
         widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **light_widgets
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 10
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **light_widgets
-        ),
+            foreground='#00000000',
+            linewidth=10,
+            **powerline_right
+        ), 
         widget.TextBox(
             text='',
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
+            background=colors['color15'],
             foreground=colors['color0'],
-            **light_widgets
         ),
         widget.GenPollText(
+            background=colors['color15'],
             foreground=colors['color0'],
             func=lambda: subprocess.check_output("/home/wingej0/dotfiles/scripts/brightness.sh").decode("utf-8").strip(),
             update_interval=30,
-            **widget_defaults,
-            **light_widgets
+            **widget_defaults
         ),
         widget.Sep(
+            background=colors['color15'],
             foreground=colors['color0'],
             padding=10,
-            size_percent=60,
-            **light_widgets
+            size_percent=60
         ), 
         widget.TextBox(
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
+            background=colors['color15'],
             foreground=colors['color0'],
             text="",
-            **light_widgets
         ),
         widget.Volume(
+            background=colors['color15'],
             foreground=colors['color0'],
-            **widget_defaults,
-            **light_widgets
+            get_volume_command="/home/wingej0/dotfiles/qtile/scripts/volume.sh",
+            **widget_defaults
         ),
         widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **light_widgets
+            background=colors['color15'],
+            linewidth=0,
+            **powerline_left
         ),
         widget.Sep(
-            linewidth = 0,
-            padding = 10
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **mid_widgets
+            foreground='#00000000',
+            linewidth=10,
+            **powerline_right
         ),
         widget.CurrentLayoutIcon(
+            background=colors['color1'],
             foreground=colors['color15'],
-            scale=0.50,
-            **mid_widgets
+            scale=0.55,
         ),
         widget.CurrentLayout(
+            background=colors['color1'],
             foreground=colors['color15'],
             **widget_defaults,
-            **mid_widgets
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **mid_widgets
+            **powerline_left
         ),
         widget.Spacer(),
         widget.Sep(
             linewidth = 0,
-            padding = 10,
-            **dark_widgets
+            **powerline_right,
         ),
         widget.GroupBox(
             active=colors['color15'],
-            borderwidth = 2,
+            background=colors['color11'],
             foreground=colors['color15'],
             disable_drag=True,
             font="FontAwesome6Free",
-            fontsize=11,
+            fontsize=14,
             hide_unused=False,
-            highlight_color=['#00000000', '#00000000'],
+            highlight_color=[colors['color1'],colors['color1']],
             highlight_method="line",
             inactive=colors['color6'],
             this_current_screen_border=colors['color15'],
             this_screen_border=colors['color15'],
             other_current_screen_border=colors['color1'],
             other_screen_border=colors['color0'],
-            urgent_method = "line",
             use_mouse_wheel=False,
-            **dark_widgets
         ),
         widget.Sep(
+            background=colors['color11'],
             linewidth = 0,
-            padding = 10,
-            **dark_widgets
+            **powerline_left,
         ),
         widget.Spacer(),
-        widget.Mpris2(
-            display_metadata = ['xesam:title', 'xesam:artist', 'xesam:album'],
-            fmt = "{}",
-            padding = 10,
-            paused_text = " {track}",
-            width = 200,
-            **widget_defaults,
-        ),
         widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **mid_widgets
+            foreground='#00000000',
+            linewidth=10,
+            **powerline_right
         ),
         widget.TextBox(
             font="FontAwesome6Free",
             text="",
+            background=colors['color1'],
             foreground=colors['color15'],
-            **mid_widgets
         ),
         widget.CheckUpdates(
+            background=colors['color1'],
             foreground=colors['color15'],
             distro='Arch_checkupdates',
             display_format='{updates}',
             initial_text='0',
             no_update_string='0',
             **widget_defaults,
-            **mid_widgets
+            **powerline_left
         ),
         widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **mid_widgets
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 10
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **light_widgets
+            foreground='#00000000',
+            linewidth=10,
+            **powerline_right
         ),
         widget.TextBox(
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
+            background=colors['color15'],
             foreground=colors['color0'],
             text="",
-            **light_widgets
         ),
         widget.Battery(
+            background=colors['color15'],
             foreground=colors['color0'],
             format="{percent:2.0%}",
             **widget_defaults,
-            **light_widgets
         ),
         widget.GenPollText(
+            background=colors['color15'],
             foreground=colors['color0'],
             func=lambda: subprocess.check_output("/home/wingej0/dotfiles/scripts/power-profile.sh").decode("utf-8").strip(),
             update_interval=30,
@@ -315,175 +274,128 @@ def init_widgets(monitor):
                 'Button1' : lazy.spawn('alacritty -e /home/wingej0/dotfiles/scripts/power-management.sh'),
             },
             **widget_defaults,
-            **light_widgets
+            **powerline_left
         ),
         widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **light_widgets
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 10
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **light_widgets
+            foreground='#00000000',
+            linewidth=10,
+            **powerline_right
         ),
         widget.TextBox(
+            background=colors['color15'],
             foreground=colors['color0'],
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
             text='',
             mouse_callbacks={
                 'Button1' : lazy.spawn("google-chrome-stable --app=https://bard.google.com"),
-            },
-            **light_widgets
+            }
         ),
         widget.TextBox(
+            background=colors['color15'],
             foreground=colors['color0'],
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
             text='',
             mouse_callbacks={
                 'Button1' : lazy.spawn("variety --selector")
-            },
-            **light_widgets
+            }
         ),
         widget.TextBox(
+            background=colors['color15'],
             foreground=colors['color0'],
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
             text='',
             mouse_callbacks={
-                'Button1' : lazy.spawn('nautilus'),
+                'Button1' : lazy.spawn('thunar'),
             },
-            **light_widgets
         ),
-        # widget.TextBox(
-        #     foreground=colors['color0'],
-        #     font="FontAwesome6Free",
-        #     fontsize=12,
-        #     text='',
-        #     mouse_callbacks={
-        #         'Button1' : lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh"),
-        #     },
-        #     **light_widgets
-        # ),
-        # widget.TextBox(
-        #     foreground=colors['color0'],
-        #     font="FontAwesome6Free",
-        #     fontsize=12,
-        #     text='',
-        #     mouse_callbacks={
-        #         'Button1' : lazy.spawn('/home/wingej0/dotfiles/scripts/grim.sh'),
-        #     },
-        #     **light_widgets
-        # ),
         widget.TextBox(
+            background=colors['color15'],
             foreground=colors['color0'],
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
             text='',
             mouse_callbacks={
                 'Button1' : lazy.spawn('blueman-manager'),
-            },
-            **light_widgets
+            }
         ),
-        widget.WiFiIcon(
-            active_colour = colors['color0'],
-            foreground = colors['color0'],
-            interface = "wlp0s20f3",
-            padding_y = 9,
+        WifiTextBox(
+            background=colors['color15'],
+            foreground=colors['color0'],
+            font="FontAwesome6Free",
+            fontsize=14,
+            text='',
             mouse_callbacks={
-                'Button3' : lazy.spawn('alacritty -e nmtui'),
-            },
-            **widget_defaults,
-            **light_widgets
+                'Button1' : lazy.spawn('alacritty -e nmtui'),
+            }
         ),
         widget.Sep(
+            background=colors['color15'],
             linewidth = 0,
-            padding = 10,
-            **light_widgets
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 10
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 10,
-            **dark_widgets
+            **powerline_right,
         ),
         widget.Clock(
+            background=colors['color11'],
             foreground=colors['color15'],
             font="Fira Code Nerd Font Bold",
-            fontsize=12,
+            fontsize=14,
             format=' %b %d | %I:%M %p',
-            mouse_callbacks={
-                'Button1' : lazy.spawn('xfce4-session-logout'),
-            },
-            **dark_widgets
         ),
         widget.Sep(
+            background=colors['color11'],
             linewidth = 0,
-            padding = 15,
-            **dark_widgets
-        ),
-        widget.Sep(
-            linewidth = 0,
-            padding = 5
+            **powerline_left,
         ),
     ]
 
     if qtile.core.name == "x11":
         clipboard = widget.TextBox(
+            background=colors['color15'],
             foreground=colors['color0'],
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
             text='',
             mouse_callbacks={
                 'Button1' : lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/greenclip.sh"),
-            },
-            **light_widgets
+            }
         )
 
         screenshot = widget.TextBox(
+            background=colors['color15'],
             foreground=colors['color0'],
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
             text='',
             mouse_callbacks={
                 'Button1' : lazy.spawn('flameshot launcher'),
-            },
-            **light_widgets
+            }
         )
-
     elif qtile.core.name == "wayland":
         clipboard = widget.TextBox(
+            background=colors['color15'],
             foreground=colors['color0'],
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
             text='',
             mouse_callbacks={
                 'Button1' : lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh"),
-            },
-            **light_widgets
+            }
         )
 
         screenshot = widget.TextBox(
+            background=colors['color15'],
             foreground=colors['color0'],
             font="FontAwesome6Free",
-            fontsize=12,
+            fontsize=14,
             text='',
             mouse_callbacks={
                 'Button1' : lazy.spawn('/home/wingej0/dotfiles/scripts/grim.sh'),
-            },
-            **light_widgets
+            }
         )
 
-    widgets_list.insert(50, clipboard)
-    widgets_list.insert(51, screenshot)
+    widgets_list.insert(38, clipboard)
+    widgets_list.insert(39, screenshot)
 
     return widgets_list

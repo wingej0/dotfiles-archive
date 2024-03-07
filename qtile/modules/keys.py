@@ -173,15 +173,15 @@ mouse = [
 
 # Application keybindings
 keys.extend([
-    Key([mod, "shift"], "Return", lazy.spawn("thunar"),
+    Key([mod, "shift"], "Return", lazy.spawn("nautilus"),
         desc="Launch file browser"),
     Key([mod], "Space", lazy.spawn("rofi -show drun"),
         desc="Application launcher"),
     Key([mod], "b", lazy.spawn("firefox"),
         desc="Launch web browser"),
-    Key([mod], "m", lazy.spawn("mailspring --password-store='gnome-libsecret'"),
+    Key([mod], "m", lazy.spawn("geary"),
         desc="Launch email client"),
-    Key([mod], "c", lazy.spawn("google-chrome-stable --app=https://calendar.google.com"),
+    Key([mod], "c", lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/calendar.sh"),
         desc="Launch Calendar"),
     Key([mod], "t", lazy.spawn("telegram-desktop"),
         desc="Launch Telegram"),
