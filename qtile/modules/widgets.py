@@ -189,6 +189,7 @@ def init_widgets(monitor):
         ),
         widget.Volume(
             foreground=colors['color0'],
+            get_volume_command = "/home/wingej0/dotfiles/qtile/scripts/volume.sh",
             **widget_defaults,
             **light_widgets
         ),
@@ -220,6 +221,11 @@ def init_widgets(monitor):
             linewidth = 0,
             padding = 10,
             **mid_widgets
+        ),
+        widget.CapsNumLockIndicator(
+            padding = 10,
+            update_interval = 1,
+            **widget_defaults
         ),
         widget.Spacer(),
         widget.Sep(
