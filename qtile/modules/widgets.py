@@ -224,7 +224,7 @@ def init_widgets(monitor):
         ),
         widget.CapsNumLockIndicator(
             padding = 10,
-            update_interval = 1,
+            update_interval = 0.2,
             **widget_defaults
         ),
         widget.Spacer(),
@@ -400,7 +400,7 @@ def init_widgets(monitor):
         widget.WiFiIcon(
             active_colour = colors['color0'],
             foreground = colors['color0'],
-            interface = "wlp0s20f3",
+            interface = "wlan0",
             padding_y = 9,
             mouse_callbacks={
                 'Button3' : lazy.spawn('alacritty -e nmtui'),
