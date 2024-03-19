@@ -8,6 +8,9 @@ wal -i $image
 # Copy image to the .cache
 cp $image ~/.cache/current_wallpaper.jpg
 
+# Reload Doom Emacs
+doom sync
+
 # Gnome 3, Unity
 gsettings set org.gnome.desktop.background picture-uri "file://$image" 2> /dev/null
 gsettings set org.gnome.desktop.background picture-uri-dark "file://$image" 2> /dev/null

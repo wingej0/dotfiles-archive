@@ -11,5 +11,8 @@ cp $image ~/.cache/current_wallpaper.jpg
 # Set wallpaper in qtile
 qtile cmd-obj -o cmd -f restart
 
+# Reload Doom Emacs
+doom sync
+
 # Update betterlockscreen image
 betterlockscreen -u .cache/current_wallpaper.jpg

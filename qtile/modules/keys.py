@@ -155,7 +155,7 @@ for i in groups:
 
 # Scratchpad keybindings
 keys.extend([
-    Key(["mod1"], "Return", lazy.group['scratchpad'].dropdown_toggle('term')),
+    Key([mod, "mod1"], "Return", lazy.group['scratchpad'].dropdown_toggle('term')),
     Key(["mod1"], "v", lazy.group['scratchpad'].dropdown_toggle('volume')),
     Key(["mod1"], "Space", lazy.group['scratchpad'].dropdown_toggle('newTask')),
     Key([mod], "a", lazy.group['scratchpad'].dropdown_toggle('angular')),
@@ -191,7 +191,7 @@ keys.extend([
         desc="Randomly select a new wallpaper"),
     Key([mod, "shift"], "w", lazy.spawn("variety -p"),
         desc="Go back to previous wallpaper"),
-    Key(["mod1"], "w", lazy.spawn("variety --selector"),
+    Key(["control", "mod1"], "w", lazy.spawn("variety --selector"),
         desc="Open wallpaper selector"),
     Key(["mod1"], "f", lazy.spawn("variety -f"),
         desc="Save current wallpaper to favorites"),

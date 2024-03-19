@@ -43,6 +43,37 @@
   :config
   (setq ivy-initial-inputs-alist nil)) ;; Don't start searches with ^
 
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
+
+(use-package helpful
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
+
+;; NOTE: The first time you load your configuration on a new machine, you'll
+;; need to run the following command interactively so that mode line icons
+;; display correctly:
+;;
+;; M-x all-the-icons-install-fonts
+
+(use-package all-the-icons)
+
+(use-package doom-modeline
+  :init (doom-modeline-mode 1))
+
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 1))
+
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -61,22 +92,33 @@
 ;; Set up the visible bell
 (setq visible-bell t)
 
-(set-face-attribute 'default nil :font "Fira Code Nerd Font" :height 120)
+(column-number-mode)
+(global-display-line-numbers-mode t)
 
-;; Set color theme
-(load-theme 'wombat)
+;; Disable line numbers in certain modes
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(set-face-attribute 'default nil :font "Fira Code Nerd Font" :height 120)
 
 ;; Transparency
 (set-frame-parameter nil 'alpha-background 80) ; For current frame
 (add-to-list 'default-frame-alist '(alpha-background . 80)) ; For all new frames henceforth
 
-;; NOTE: The first time you load your configuration on a new machine, you'll
-;; need to run the following command interactively so that mode line icons
-;; display correctly:
-;;
-;; M-x all-the-icons-install-fonts
+(use-package ewal)
+(use-package ewal-doom-themes)
+(load-theme 'ewal-doom-one)
 
-(use-package all-the-icons)
+(use-package toc-org
+    :commands toc-org-enable
+    :init (add-hook 'org-mode-hook 'toc-org-enable))
 
-(use-package doom-modeline
-  :init (doom-modeline-mode 1))
+(add-hook 'org-mode-hook 'org-indent-mode)
+(use-package org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))

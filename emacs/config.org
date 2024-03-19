@@ -6,6 +6,9 @@
 
 * Programs to Load
 
+** Set up config file
+
+Add the following line to .config/emacs/init.el => (org-babel-load-file "~/dotfiles/emacs/config.org")
 ** Load Package Manager
 
 #+begin_src emacs-lisp
@@ -28,7 +31,7 @@
   (setq use-package-always-ensure t)
 #+end_src
 
-** Install and Configure Ivy for Autocompletion
+** Ivy
 
 #+begin_src emacs-lisp
   (use-package ivy
@@ -57,6 +60,53 @@
 	   ("C-r" . 'counsel-minibuffer-history))
     :config
     (setq ivy-initial-inputs-alist nil)) ;; Don't start searches with ^
+#+end_src
+
+** Ivy Rich
+
+#+begin_src emacs-lisp
+  (use-package ivy-rich
+    :init
+    (ivy-rich-mode 1))
+#+end_src
+
+** Helpful
+
+#+begin_src emacs-lisp
+(use-package helpful
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
+#+end_src
+
+** Doom Modeline
+
+#+begin_src emacs-lisp
+;; NOTE: The first time you load your configuration on a new machine, you'll
+;; need to run the following command interactively so that mode line icons
+;; display correctly:
+;;
+;; M-x all-the-icons-install-fonts
+
+(use-package all-the-icons)
+
+(use-package doom-modeline
+  :init (doom-modeline-mode 1))
+#+end_src
+
+** Which-Key
+
+#+begin_src emacs-lisp
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 1))
 #+end_src
 
 * General Configuration
@@ -89,30 +139,59 @@ Here are some basic UI settings to make the editor look more minimal.
   (setq visible-bell t)
 #+end_src
 
+** Line Numbers
+
+#+begin_src emacs-lisp
+  (column-number-mode)
+  (global-display-line-numbers-mode t)
+
+  ;; Disable line numbers in certain modes
+  (dolist (mode '(org-mode-hook
+                  term-mode-hook
+                  shell-mode-hook
+                  eshell-mode-hook))
+    (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+end_src
+
+** Rainbow Delimiters
+
+#+begin_src emacs-lisp
+  (use-package rainbow-delimiters
+    :hook (prog-mode . rainbow-delimiters-mode))
+#+end_src
+
 ** Font and theme (this will be changed as I go, I'm sure)
 
 #+begin_src emacs-lisp
   (set-face-attribute 'default nil :font "Fira Code Nerd Font" :height 120)
-
-  ;; Set color theme
-  (load-theme 'wombat)
 
   ;; Transparency
   (set-frame-parameter nil 'alpha-background 80) ; For current frame
   (add-to-list 'default-frame-alist '(alpha-background . 80)) ; For all new frames henceforth
 #+end_src
 
-** Doom Modeline
+** Ewal - Theme Emacs from Pywal
+#+begin_src emacs-lisp
+(use-package ewal)
+(use-package ewal-doom-themes)
+(load-theme 'ewal-doom-one)
+#+end_src
+
+* ORG Mode
+
+** Enabling Table of Contents
 
 #+begin_src emacs-lisp
-  ;; NOTE: The first time you load your configuration on a new machine, you'll
-  ;; need to run the following command interactively so that mode line icons
-  ;; display correctly:
-  ;;
-  ;; M-x all-the-icons-install-fonts
-
-  (use-package all-the-icons)
-
-  (use-package doom-modeline
-    :init (doom-modeline-mode 1))
+(use-package toc-org
+    :commands toc-org-enable
+    :init (add-hook 'org-mode-hook 'toc-org-enable))
 #+end_src
+
+** Enabling Org-Bullets
+
+#+begin_src emacs-lisp
+(add-hook 'org-mode-hook 'org-indent-mode)
+(use-package org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+#+end_src
+
