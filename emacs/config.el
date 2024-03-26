@@ -86,7 +86,7 @@
 
 (menu-bar-mode -1)          ; Disable the menu bar
 
-;; Disable title bar in Gnome
+;; Disable title bar in Gnome 
 (setq default-frame-alist '((undecorated . t)))
 
 ;; Set up the visible bell
@@ -113,7 +113,11 @@
 
 (use-package ewal)
 (use-package ewal-doom-themes)
-(load-theme 'ewal-doom-one)
+(load-theme 'ewal-doom-one t)
+
+(global-set-key (kbd "C-<f1>")
+                (lambda () (interactive)
+                  (load-theme 'ewal-doom-one t)))
 
 (use-package toc-org
     :commands toc-org-enable

@@ -400,7 +400,7 @@ def init_widgets(monitor):
         widget.WiFiIcon(
             active_colour = colors['color0'],
             foreground = colors['color0'],
-            interface = "wlan0",
+            interface = "wlp0s20f3",
             padding_y = 9,
             mouse_callbacks={
                 'Button3' : lazy.spawn('alacritty -e nmtui'),

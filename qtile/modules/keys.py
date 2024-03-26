@@ -195,6 +195,10 @@ keys.extend([
         desc="Open wallpaper selector"),
     Key(["mod1"], "f", lazy.spawn("variety -f"),
         desc="Save current wallpaper to favorites"),
+    Key([mod], "x", lazy.spawn("killall variety"),
+        desc="Kill Variety"),
+    Key([mod], "z", lazy.spawn("variety --set /home/wingej0/Pictures/wingets.png"),
+        desc="Set wallpaper to family. :)"),
     
     # System76 Power Management
     Key(["control", "mod1"], "b", lazy.spawn("system76-power charge-thresholds --profile balanced"),

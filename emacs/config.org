@@ -8,7 +8,8 @@
 
 ** Set up config file
 
-Add the following line to .config/emacs/init.el => (org-babel-load-file "~/dotfiles/emacs/config.org")
+Add the following line to .config/emacs/init.el (or .emacs on Arch) => (org-babel-load-file "~/dotfiles/emacs/config.org")
+
 ** Load Package Manager
 
 #+begin_src emacs-lisp
@@ -132,7 +133,7 @@ Here are some basic UI settings to make the editor look more minimal.
 
   (menu-bar-mode -1)          ; Disable the menu bar
 
-  ;; Disable title bar in Gnome
+  ;; Disable title bar in Gnome 
   (setq default-frame-alist '((undecorated . t)))
 
   ;; Set up the visible bell
@@ -172,9 +173,13 @@ Here are some basic UI settings to make the editor look more minimal.
 
 ** Ewal - Theme Emacs from Pywal
 #+begin_src emacs-lisp
-(use-package ewal)
-(use-package ewal-doom-themes)
-(load-theme 'ewal-doom-one)
+  (use-package ewal)
+  (use-package ewal-doom-themes)
+  (load-theme 'ewal-doom-one t)
+
+  (global-set-key (kbd "C-<f1>")
+                  (lambda () (interactive)
+                    (load-theme 'ewal-doom-one t)))
 #+end_src
 
 * ORG Mode

@@ -39,7 +39,7 @@ screens = [
         wallpaper=get_wallpaper(),
         wallpaper_mode="fill"
     ),
-     Screen(
+    Screen(
         wallpaper='/home/wingej0/Pictures/kids1.jpg',
         wallpaper_mode="fill"
     ),
