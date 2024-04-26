@@ -179,7 +179,7 @@ keys.extend([
         desc="Application launcher"),
     Key([mod], "b", lazy.spawn("firefox"),
         desc="Launch web browser"),
-    Key([mod], "m", lazy.spawn("geary"),
+    Key([mod], "m", lazy.spawn("mailspring --password-store='gnome-libsecret'"),
         desc="Launch email client"),
     Key([mod], "c", lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/calendar.sh"),
         desc="Launch Calendar"),
