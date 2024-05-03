@@ -1,7 +1,7 @@
 import subprocess
 
 from libqtile import qtile
-from libqtile.command import lazy
+from libqtile.lazy import lazy
 from libqtile.widget import TextBox
 from qtile_extras import widget
 from qtile_extras.widget.decorations import RectDecoration

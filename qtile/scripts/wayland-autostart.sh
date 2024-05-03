@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=$compositor_name &
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 swayidle -w timeout 600 'swaylock -f' &
@@ -10,5 +10,5 @@ system76-power daemon &
 wl-paste --type text --watch cliphist store &
 wl-paste --type image --watch cliphist store &
 cp ~/dotfiles/qtile/scripts/variety-wayland.sh ~/.config/variety/scripts/set_wallpaper &
-# variety &
+variety &
 emacs daemon

@@ -1,6 +1,6 @@
 from libqtile import qtile
 from libqtile.config import Click, Drag, Key
-from libqtile.command import lazy
+from libqtile.lazy import lazy
 
 from .groups import groups
 
