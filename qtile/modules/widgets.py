@@ -69,7 +69,7 @@ def init_widgets(monitor):
             foreground=colors['color15'],
             text="Qtile",
             mouse_callbacks={
-                'Button1' : lazy.spawn('xfce4-appfinder'),
+                'Button1' : lazy.spawn('rofi -show drun'),
             },
             **dark_widgets          
         ),
@@ -428,7 +428,7 @@ def init_widgets(monitor):
             fontsize=12,
             format=' %b %d | %I:%M %p',
             mouse_callbacks={
-                'Button1' : lazy.spawn('xfce4-session-logout'),
+                'Button1' : lazy.spawn('wlogout'),
             },
             **dark_widgets
         ),
