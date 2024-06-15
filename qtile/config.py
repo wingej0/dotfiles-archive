@@ -1,6 +1,6 @@
 import os
 
-from modules.get_theme import get_wallpaper, colors
+from modules.get_theme import colors
 from modules.groups import groups
 from modules.hooks import *
 from modules.keys import keys, mod

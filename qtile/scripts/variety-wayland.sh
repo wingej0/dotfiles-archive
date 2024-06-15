@@ -2,8 +2,8 @@
 #
 image=$1
 
-# Create the color profile with pywal
-wal -i $image
+# Create the color profile with wallust
+wallust run $image
 
 # Copy image to the .cache
 cp $image ~/.cache/current_wallpaper.jpg

@@ -2,7 +2,7 @@ import subprocess
 
 from libqtile import qtile
 from libqtile.lazy import lazy
-from libqtile.widget import TextBox
+# from libqtile.widget import TextBox
 from qtile_extras import widget
 from qtile_extras.widget.decorations import RectDecoration
 
@@ -279,7 +279,7 @@ def init_widgets(monitor):
         ),
         widget.CheckUpdates(
             foreground=colors['color15'],
-            distro='Arch_checkupdates',
+            distro='Fedora',
             display_format='{updates}',
             initial_text='0',
             no_update_string='0',
@@ -367,26 +367,6 @@ def init_widgets(monitor):
             },
             **light_widgets
         ),
-        # widget.TextBox(
-        #     foreground=colors['color0'],
-        #     font="FontAwesome6Free",
-        #     fontsize=12,
-        #     text='',
-        #     mouse_callbacks={
-        #         'Button1' : lazy.spawn("/home/wingej0/dotfiles/qtile/scripts/clipboard.sh"),
-        #     },
-        #     **light_widgets
-        # ),
-        # widget.TextBox(
-        #     foreground=colors['color0'],
-        #     font="FontAwesome6Free",
-        #     fontsize=12,
-        #     text='',
-        #     mouse_callbacks={
-        #         'Button1' : lazy.spawn('/home/wingej0/dotfiles/scripts/grim.sh'),
-        #     },
-        #     **light_widgets
-        # ),
         widget.TextBox(
             foreground=colors['color0'],
             font="FontAwesome6Free",
@@ -397,15 +377,14 @@ def init_widgets(monitor):
             },
             **light_widgets
         ),
-        widget.WiFiIcon(
-            active_colour = colors['color0'],
+        widget.TextBox(
             foreground = colors['color0'],
-            interface = "wlan0",
-            padding_y = 9,
+            font="FontAwesome6Free",
+            fontsize=12,
+            text='',
             mouse_callbacks={
-                'Button3' : lazy.spawn('alacritty -e nmtui'),
+                'Button1' : lazy.spawn('alacritty -e nmtui'),
             },
-            **widget_defaults,
             **light_widgets
         ),
         widget.Sep(

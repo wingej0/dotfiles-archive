@@ -215,11 +215,11 @@ keys.extend([
         desc="Set power profile to performance"),
 
     # Media Keys
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl -- set-sink-volume 0 +5%"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.03+"),
         desc="Volume Up"),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl -- set-sink-volume 0 -5%"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.03-"),
         desc="Volume Down"),
-    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle"),
+    Key([], "XF86AudioMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
         desc="Toggle Mute"),
     Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"),
         desc="Play/Pause"),

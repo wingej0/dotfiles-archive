@@ -14,9 +14,9 @@ layout_theme = {
 layouts = [
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
+    layout.RatioTile(**layout_theme),
     layout.MonadThreeCol(**layout_theme),
     layout.Floating(**layout_theme),
-    layout.RatioTile(**layout_theme),
     layout.Max(**layout_theme),
     layout.Spiral(
         main_pane_ratio = 0.70,
