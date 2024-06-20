@@ -28,7 +28,7 @@ configuration {
 }
 
 /* ---- Load pywal colors (custom wal template) ---- */
-@import "~/.cache/wal/colors-rofi-pywal"
+@import "~/.cache/rofi/colors-rofi-pywal"
 
 /* ---- Window ---- */
 window {

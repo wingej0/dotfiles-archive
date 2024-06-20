@@ -42,5 +42,5 @@ check_contrast = true
 # target: Absolute path in which to place a file with generated templated values.
 # If one is a directory, the other one NEEDS to also be one, one line example below
 # zathura = { template = 'zathura', target = '~/.config/zathura/zathurarc' }
-qtile = { template = 'templates/colors-qtile', target = '~/.cache/qtile/colors.json' } 
-
+qtile = { template = 'templates/colors-qtile.json', target = '~/.cache/qtile/colors.json' } 
+rofi = { template = 'templates/colors-rofi-pywal.rasi', target = '~/.cache/rofi/colors-rofi-pywal.rasi' }

@@ -5,10 +5,10 @@ WP=$1
 # Copy image to .cache
 cp $WP ~/.cache/current_wallpaper.jpg
 
-# gsettings set org.gnome.desktop.background picture-uri file:///home/wingej0/.cache/current_wallpaper.jpg
+gsettings set org.gnome.desktop.background picture-uri file:///home/wingej0/.cache/current_wallpaper.jpg
 gsettings set org.gnome.desktop.background picture-uri-dark file:///home/wingej0/.cache/current_wallpaper.jpg
 
 # GNOME Screensaver / Lock screen - thanks to George C. de Araujo for the patch
 gsettings set org.gnome.desktop.screensaver picture-uri file:///home/wingej0/.cache/current_wallpaper.jpg
 
-./home/wingej0/wal.sh
+wallust run $1
